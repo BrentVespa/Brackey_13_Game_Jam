@@ -17,6 +17,11 @@ config/icon="res://icon.svg"
 [autoload]
 
 GlobalSignals="*res://Scripts/Controllers/Global_Signals.gd"
+PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg")
 
 [file_customization]
 
