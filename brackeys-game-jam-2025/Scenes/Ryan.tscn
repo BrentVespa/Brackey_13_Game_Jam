@@ -1,3 +1,100 @@
-[gd_scene format=3 uid="uid://bgwfhmd8x4ush"]
+[gd_scene load_steps=7 format=3 uid="uid://bgwfhmd8x4ush"]
 
-[node name="Ryan" type="Node2D"]
+[ext_resource type="Script" path="res://Scripts/character_movement_test_3d.gd" id="1_dlm5v"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hbdpk"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_he1ud"]
+sky_material = SubResource("ProceduralSkyMaterial_hbdpk")
+
+[sub_resource type="Environment" id="Environment_gm11j"]
+background_mode = 2
+sky = SubResource("Sky_he1ud")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_5k66p"]
+radius = 0.25
+height = 0.9
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_64bxv"]
+
+[node name="Ryan" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_gm11j")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="CharacterReference" type="CharacterBody3D" parent="."]
+script = ExtResource("1_dlm5v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterReference"]
+mesh = SubResource("CapsuleMesh_5k66p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterReference"]
+shape = SubResource("CapsuleShape3D_64bxv")
+
+[node name="Camera3D" type="Camera3D" parent="CharacterReference"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.167447, 0)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="MainRoomBox" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(3.78763, 0, 0, 0, 1.2912, 0, 0, 0, 1, 0, 2.615, 0)
+use_collision = true
+size = Vector3(6, 5, 12)
+
+[node name="RoomCutout" type="CSGBox3D" parent="CSGCombiner3D/MainRoomBox"]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+operation = 2
+size = Vector3(5.75, 4.75, 11.75)
+
+[node name="ElevatorDoorCutout" type="CSGBox3D" parent="CSGCombiner3D/MainRoomBox"]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, 2.93337, -1.625, 0)
+operation = 2
+size = Vector3(0.160168, 1.5, 1.5)
+
+[node name="Pipe1" type="CSGCylinder3D" parent="CSGCombiner3D/MainRoomBox"]
+transform = Transform3D(0.313792, 0, 0, 0, 1.42918, 0, 0, 0, 1.08921, 2.04918, -0.0258175, 5.09934)
+height = 3.44729
+
+[node name="Pipe2" type="CSGCylinder3D" parent="CSGCombiner3D/MainRoomBox"]
+transform = Transform3D(0.313792, 0, 0, 0, 1.42918, 0, 0, 0, 1.08921, 1.60466, -0.0258175, 5.09934)
+height = 3.44729
+
+[node name="Pipe3" type="CSGCylinder3D" parent="CSGCombiner3D/MainRoomBox"]
+transform = Transform3D(0.313792, 0, 0, 0, 1.42918, 0, 0, 0, 1.08921, 1.16144, -0.0258175, 5.09934)
+height = 3.44729
+
+[node name="AquariumBox" type="CSGBox3D" parent="CSGCombiner3D/MainRoomBox"]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, -0.41626, -1.39942, 4.34329)
+size = Vector3(1.85, 2, 3.1)
+
+[node name="AquariumCutout" type="CSGBox3D" parent="CSGCombiner3D/MainRoomBox/AquariumBox"]
+operation = 2
+size = Vector3(1.8, 1.95, 3.05)
+
+[node name="FrontWindowCutout" type="CSGBox3D" parent="CSGCombiner3D/MainRoomBox/AquariumBox"]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, -0.007, -0.0757556, -1.569)
+operation = 2
+size = Vector3(1.66775, 1.20361, 0.125)
+
+[node name="SideWindowCutout" type="CSGBox3D" parent="CSGCombiner3D/MainRoomBox/AquariumBox"]
+transform = Transform3D(-4.37113e-08, 0, 0.999999, 0, 1, 0, -0.999999, 0, -4.37114e-08, -0.892, -0.0727804, 0.0100002)
+operation = 2
+size = Vector3(2.49325, 1.20361, 0.125)
+
+[node name="MachineBox1" type="CSGBox3D" parent="CSGCombiner3D/MainRoomBox"]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, 0.683964, -1.83853, 5.08364)
+size = Vector3(0.343201, 1.15671, 1.58105)
+
+[node name="PipeConnector" type="CSGCylinder3D" parent="CSGCombiner3D/MainRoomBox/MachineBox1"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0.242305, -0.0464026, 0)
+radius = 0.3
+height = 0.23611
