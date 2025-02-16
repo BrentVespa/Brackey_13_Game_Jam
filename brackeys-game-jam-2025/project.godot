@@ -1,0 +1,32 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Brackeys Game Jam 2025"
+config/features=PackedStringArray("4.3", "Forward Plus")
+config/icon="res://icon.svg"
+
+[autoload]
+
+GlobalSignals="*res://Scripts/Controllers/Global_Signals.gd"
+
+[file_customization]
+
+folder_colors={
+"res://Assets/": "red",
+"res://Assets/Imported/": "orange",
+"res://Assets/Materials/": "orange",
+"res://Prefabs/": "green",
+"res://Prefabs/Objects/": "teal",
+"res://Prefabs/UI/": "teal",
+"res://Scenes/": "purple",
+"res://Scripts/": "gray"
+}
