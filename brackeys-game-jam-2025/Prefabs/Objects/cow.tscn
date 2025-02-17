@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=3 uid="uid://bfcnv76uopvge"]
+
+[ext_resource type="Script" path="res://Scripts/Life_Sim.gd" id="1_apa0r"]
+[ext_resource type="Texture2D" uid="uid://bbpu17lrxsva7" path="res://icon.svg" id="2_fx0rt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wktty"]
+albedo_color = Color(0.852646, 0.155287, 0.543762, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_2an5f"]
+material = SubResource("StandardMaterial3D_wktty")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3el1k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bsnbd"]
+size = Vector2(13, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4lsfh"]
+size = Vector2(13, 20)
+
+[node name="Cow" type="CharacterBody2D" groups=["Cow"]]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_apa0r")
+color = Color(1, 1, 1, 1)
+SPEED = 150
+
+[node name="Mesh" type="MeshInstance2D" parent="."]
+unique_name_in_owner = true
+rotation = -3.14159
+scale = Vector2(19.8594, 19.6232)
+mesh = SubResource("QuadMesh_2an5f")
+texture = ExtResource("2_fx0rt")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_3el1k")
+
+[node name="Right" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right"]
+position = Vector2(10, 0)
+shape = SubResource("RectangleShape2D_bsnbd")
+
+[node name="Left" type="Area2D" parent="."]
+rotation = -3.14159
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left"]
+position = Vector2(10, 8.74228e-07)
+shape = SubResource("RectangleShape2D_4lsfh")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="MergeCheck" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="Target" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[connection signal="body_entered" from="Right" to="." method="_on_right_body_entered"]
+[connection signal="body_exited" from="Right" to="." method="_on_right_body_exited"]
+[connection signal="body_entered" from="Left" to="." method="_on_left_body_entered"]
+[connection signal="body_exited" from="Left" to="." method="_on_left_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="MergeCheck" to="." method="_on_merge_check_timeout"]

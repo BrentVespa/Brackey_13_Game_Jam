@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://ba5420pinnc0h"]
+
+[ext_resource type="Script" path="res://Scenes/character_body_2d.gd" id="1_k6y54"]
+[ext_resource type="Texture2D" uid="uid://bbpu17lrxsva7" path="res://icon.svg" id="2_i83wk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wktty"]
+albedo_color = Color(0.852646, 0.155287, 0.543762, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_2an5f"]
+material = SubResource("StandardMaterial3D_wktty")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3el1k"]
+
+[sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_mxfvb"]
+length = 10.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["Player"]]
+script = ExtResource("1_k6y54")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+position = Vector2(0.0353742, 0.153492)
+scale = Vector2(-19.8594, -19.6232)
+mesh = SubResource("QuadMesh_2an5f")
+texture = ExtResource("2_i83wk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_3el1k")
+
+[node name="AutoClimb" type="CollisionShape2D" parent="."]
+position = Vector2(0, 10)
+shape = SubResource("SeparationRayShape2D_mxfvb")
+disabled = true
+debug_color = Color(0.677633, 0.502214, 0.148162, 0.42)
+
+[node name="StepUp" type="Node2D" parent="."]
+
+[node name="StairCheck" type="RayCast2D" parent="StepUp"]
+unique_name_in_owner = true
+position = Vector2(0, 7)
+target_position = Vector2(16, 0)
+
+[node name="TopCheck" type="RayCast2D" parent="StepUp"]
+unique_name_in_owner = true
+position = Vector2(0, -6)
+target_position = Vector2(16, 0)

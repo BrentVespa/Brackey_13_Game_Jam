@@ -1,13 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://bdv5jxknwu820"]
+[gd_scene load_steps=17 format=3 uid="uid://bdv5jxknwu820"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_gka7d"]
-[ext_resource type="PackedScene" uid="uid://ba5420pinnc0h" path="res://Prefabs/Objects/Player.tscn" id="2_1bfl8"]
-[ext_resource type="Texture2D" uid="uid://bbpu17lrxsva7" path="res://icon.svg" id="2_8po0p"]
+[ext_resource type="PackedScene" uid="uid://ba5420pinnc0h" path="res://Prefabs/Objects/PLayer.tscn" id="2_1bfl8"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="4_5k5at"]
 [ext_resource type="PackedScene" uid="uid://bfcnv76uopvge" path="res://Prefabs/Objects/cow.tscn" id="4_72q3s"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="5_qlgtt"]
 [ext_resource type="Script" path="res://Scripts/payout_plane.gd" id="6_nt8j0"]
-[ext_resource type="PackedScene" uid="uid://0kxk3j26oypq" path="res://Prefabs/Objects/button.tscn" id="7_jkmsy"]
+[ext_resource type="Script" path="res://Scripts/Spawn_Cow.gd" id="7_qrtur"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_2m1nx"]
 
@@ -28,8 +27,13 @@ ease = 2
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sa351"]
 size = Vector2(100000, 100)
 
-[sub_resource type="QuadMesh" id="QuadMesh_8j2t6"]
-size = Vector2(200, 200)
+[sub_resource type="QuadMesh" id="QuadMesh_wfgrm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wmeph"]
+size = Vector2(1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lnvsk"]
+size = Vector2(20, 9)
 
 [node name="World_Container" type="Node2D" groups=["World"]]
 
@@ -70,12 +74,8 @@ script = ExtResource("1_gka7d")
 [node name="CharacterBody2D" parent="Unit_Container" instance=ExtResource("2_1bfl8")]
 
 [node name="Cow" parent="Unit_Container" instance=ExtResource("4_72q3s")]
-position = Vector2(115, 69)
+position = Vector2(-71, 81)
 types = Array[String](["Purple", "Blue"])
-
-[node name="Cow5" parent="Unit_Container" instance=ExtResource("4_72q3s")]
-position = Vector2(-111, 83)
-types = Array[String](["Purple"])
 
 [node name="Cow2" parent="Unit_Container" instance=ExtResource("4_72q3s")]
 position = Vector2(-178, 82)
@@ -107,38 +107,6 @@ position = Vector2(162, 169)
 scale = Vector2(1130, 116.5)
 shape = SubResource("RectangleShape2D_j0nxt")
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
-position = Vector2(546, -18)
-collision_layer = 3
-collision_mask = 3
-
-[node name="Terrain" type="MeshInstance2D" parent="StaticBody2D2"]
-position = Vector2(162, 169)
-scale = Vector2(1130, 116.5)
-mesh = SubResource("QuadMesh_2m1nx")
-texture = SubResource("GradientTexture1D_vt040")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-position = Vector2(162, 169)
-scale = Vector2(1130, 116.5)
-shape = SubResource("RectangleShape2D_j0nxt")
-
-[node name="StaticBody2D3" type="StaticBody2D" parent="."]
-position = Vector2(576, -24)
-collision_layer = 3
-collision_mask = 3
-
-[node name="Terrain" type="MeshInstance2D" parent="StaticBody2D3"]
-position = Vector2(162, 169)
-scale = Vector2(1130, 116.5)
-mesh = SubResource("QuadMesh_2m1nx")
-texture = SubResource("GradientTexture1D_vt040")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
-position = Vector2(162, 169)
-scale = Vector2(1130, 116.5)
-shape = SubResource("RectangleShape2D_j0nxt")
-
 [node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 top_level = true
 script = ExtResource("4_5k5at")
@@ -155,18 +123,26 @@ script = ExtResource("6_nt8j0")
 [node name="Area2D" type="CollisionShape2D" parent="Payout Plane"]
 shape = SubResource("RectangleShape2D_sa351")
 
-[node name="Button" parent="." instance=ExtResource("7_jkmsy")]
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(60, 100)
+script = ExtResource("7_qrtur")
 
-[node name="SpawnPoint" parent="Button" index="2"]
-position = Vector2(-237, -107)
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Area2D"]
+position = Vector2(1.90735e-06, 8.49999)
+scale = Vector2(20, 5)
+mesh = SubResource("QuadMesh_wfgrm")
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Button/SpawnPoint" index="0"]
-visible = false
-position = Vector2(15.1532, 13.4696)
-rotation = -3.14159
-mesh = SubResource("QuadMesh_8j2t6")
-texture = ExtResource("2_8po0p")
+[node name="StaticBody2D" type="StaticBody2D" parent="Area2D/MeshInstance2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D/MeshInstance2D/StaticBody2D"]
+position = Vector2(0, 1.90735e-06)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_wmeph")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 6.5)
+shape = SubResource("RectangleShape2D_lnvsk")
 
 [connection signal="body_entered" from="Payout Plane" to="Payout Plane" method="_pay_out_plane_enter"]
-
-[editable path="Button"]
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]

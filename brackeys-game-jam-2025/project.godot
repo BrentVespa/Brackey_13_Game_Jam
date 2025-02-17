@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 
 GlobalSignals="*res://Scripts/Controllers/Global_Signals.gd"
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
+EventBus="*res://Scripts/Controllers/Event_Bus.gd"
 
 [editor_plugins]
 
@@ -35,3 +36,16 @@ folder_colors={
 "res://Scenes/": "purple",
 "res://Scripts/": "gray"
 }
+
+[global_group]
+
+Cow="Cows Go Here"
+Player="Player Goes Here"
+World="World Goes Here"
+UI="UI goes here"
+
+[layer_names]
+
+2d_physics/layer_1="Players"
+2d_physics/layer_2="World"
+2d_physics/layer_3="Enemies"
