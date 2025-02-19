@@ -77,4 +77,4 @@ func payout(caller: CharacterBody2D):
 	_update_UI()
 
 func _update_UI():
-	UI.get_child(0).text = ("$ %d" % Money)
+	UI.text = ("$ %d" % Money)
