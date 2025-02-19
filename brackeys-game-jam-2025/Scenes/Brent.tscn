@@ -1,20 +1,11 @@
-[gd_scene load_steps=16 format=4 uid="uid://bdv5jxknwu820"]
+[gd_scene load_steps=12 format=4 uid="uid://bdv5jxknwu820"]
 
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_gka7d"]
 [ext_resource type="PackedScene" uid="uid://ba5420pinnc0h" path="res://Prefabs/Objects/Player.tscn" id="2_1bfl8"]
 [ext_resource type="Texture2D" uid="uid://bbpu17lrxsva7" path="res://icon.svg" id="2_8po0p"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="4_5k5at"]
 [ext_resource type="PackedScene" uid="uid://bfcnv76uopvge" path="res://Prefabs/Objects/cow.tscn" id="4_72q3s"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="5_qlgtt"]
 [ext_resource type="Script" path="res://Scripts/payout_plane.gd" id="6_nt8j0"]
 [ext_resource type="PackedScene" uid="uid://0kxk3j26oypq" path="res://Prefabs/Objects/button.tscn" id="7_jkmsy"]
 [ext_resource type="Texture2D" uid="uid://d0ifhfmqhonau" path="res://Assets/Imported/Illustration2.png" id="9_p8hsg"]
-
-[sub_resource type="Resource" id="Resource_rmdmu"]
-script = ExtResource("5_qlgtt")
-duration = 1.0
-transition = 0
-ease = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sa351"]
 size = Vector2(100000, 100)
@@ -165,14 +156,6 @@ size = Vector2(21, 572)
 
 [node name="World_Container" type="Node2D" groups=["World"]]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-physics_interpolation_mode = 1
-
-[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
-process_priority = 300
-process_physics_priority = 300
-script = ExtResource("1_gka7d")
-
 [node name="Unit_Container" type="Node2D" parent="."]
 
 [node name="CharacterBody2D" parent="Unit_Container" instance=ExtResource("2_1bfl8")]
@@ -189,6 +172,10 @@ offset_right = 19.0
 offset_bottom = -40.0
 text = "$ 000"
 metadata/_edit_use_anchors_ = true
+
+[node name="Camera2D" type="Camera2D" parent="Unit_Container/CharacterBody2D"]
+physics_interpolation_mode = 1
+position = Vector2(0, -25)
 
 [node name="Cow" parent="Unit_Container" instance=ExtResource("4_72q3s")]
 position = Vector2(115, 69)
@@ -212,14 +199,6 @@ color = Color(0.956102, 0.836099, 0.311593, 1)
 position = Vector2(-453, 37)
 types = Array[String](["Blue"])
 color = Color(0.1347, 0.51633, 0.668285, 1)
-
-[node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
-top_level = true
-script = ExtResource("4_5k5at")
-priority = 1
-follow_mode = 1
-follow_target = NodePath("../Unit_Container/CharacterBody2D")
-tween_resource = SubResource("Resource_rmdmu")
 
 [node name="Payout Plane" type="Area2D" parent="."]
 position = Vector2(0, 400)

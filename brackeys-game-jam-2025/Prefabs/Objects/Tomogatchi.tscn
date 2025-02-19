@@ -1,37 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://d317sxpef341o"]
+[gd_scene load_steps=4 format=3 uid="uid://d317sxpef341o"]
 
 [ext_resource type="PackedScene" uid="uid://bdv5jxknwu820" path="res://Scenes/Brent.tscn" id="1_mjtyp"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gm4pp"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-
-[sub_resource type="Sky" id="Sky_i2cit"]
-sky_material = SubResource("ProceduralSkyMaterial_gm4pp")
-
-[sub_resource type="Environment" id="Environment_3b02k"]
-background_mode = 2
-sky = SubResource("Sky_i2cit")
-tonemap_mode = 2
-glow_enabled = true
+[ext_resource type="Script" path="res://Scripts/Controllers/SubViewport_Controller.gd" id="1_wgnss"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_138uj"]
 viewport_path = NodePath("MeshInstance3D/MeshInstance3D3/SubViewport")
 
 [node name="Node3D" type="Node3D"]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_3b02k")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
-shadow_enabled = true
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.568)
-
 [node name="MeshInstance3D" type="CSGSphere3D" parent="."]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 0.207, 1.955, -0.96, -1.24)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 0.207, 0, 0, 0)
 radius = 0.699473
 
 [node name="MeshInstance3D2" type="CSGBox3D" parent="MeshInstance3D"]
@@ -42,7 +20,9 @@ size = Vector3(0.846504, 0.686188, 0.93869)
 [node name="MeshInstance3D3" type="Sprite3D" parent="MeshInstance3D"]
 transform = Transform3D(0.684, 0, 0, 0, 0.57, 0, 0, 0, 1.20064, 0, 0.0344174, 0.136831)
 cast_shadow = 0
+render_priority = 1
 texture = SubResource("ViewportTexture_138uj")
+script = ExtResource("1_wgnss")
 
 [node name="SubViewport" type="SubViewport" parent="MeshInstance3D/MeshInstance3D3"]
 size = Vector2i(128, 128)

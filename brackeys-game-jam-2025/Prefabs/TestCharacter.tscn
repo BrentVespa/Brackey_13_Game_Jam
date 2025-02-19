@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=3 uid="uid://cl3gwdt3fpi54"]
+
+[ext_resource type="Script" path="res://Scripts/Controllers/Character_Controller.gd" id="1_01611"]
+[ext_resource type="PackedScene" uid="uid://d317sxpef341o" path="res://Prefabs/Objects/Tomogatchi.tscn" id="1_f22dr"]
+[ext_resource type="Script" path="res://Scripts/InteractRay.gd" id="3_bjmbw"]
+[ext_resource type="Texture2D" uid="uid://cndd8t30a24ib" path="res://Assets/Imported/RingOn.png" id="4_lsa0w"]
+[ext_resource type="Texture2D" uid="uid://ba02t866h4kv8" path="res://Assets/Imported/RingOff.png" id="5_oxqvc"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_s8b7g"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_aqyaq"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_d47ww"]
+viewport_path = NodePath("MeshInstance3D/MeshInstance3D3/SubViewport")
+
+[node name="Character" type="CharacterBody3D"]
+script = ExtResource("1_01611")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("CapsuleMesh_s8b7g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_aqyaq")
+
+[node name="Node3D" parent="." instance=ExtResource("1_f22dr")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 1.26474, 0.887684, -0.70854)
+
+[node name="MeshInstance3D3" parent="Node3D/MeshInstance3D" index="1"]
+texture = SubResource("ViewportTexture_d47ww")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.329738, 1.25268, 0.20146)
+
+[node name="LookRay" type="RayCast3D" parent="Camera3D"]
+target_position = Vector3(0, 0, -3)
+script = ExtResource("3_bjmbw")
+
+[node name="Control" type="Control" parent="Camera3D/LookRay"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ON" type="Sprite2D" parent="Camera3D/LookRay/Control"]
+unique_name_in_owner = true
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_lsa0w")
+
+[node name="OFF" type="Sprite2D" parent="Camera3D/LookRay/Control"]
+unique_name_in_owner = true
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_oxqvc")
+
+[editable path="Node3D"]
+[editable path="Node3D/MeshInstance3D/MeshInstance3D3/SubViewport/World_Container"]
+[editable path="Node3D/MeshInstance3D/MeshInstance3D3/SubViewport/World_Container/Button"]
