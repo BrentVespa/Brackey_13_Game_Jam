@@ -4,10 +4,15 @@ var rng = RandomNumberGenerator.new()
 @export_category("World_Settings")
 @export var Money = 0
 @export var override = true
+@export var food : int = 50
+@export var water : int = 50
+@export var stress : int = 50
 @export var Types : Dictionary = {"Blue": 5, "Purple": 10, "Yellow" : 1000}
 @export var TypesColor : Dictionary = {"Blue": Color.BLUE, "Purple": Color.PURPLE, "Yellow" : Color.YELLOW}
 @onready var World = get_tree().get_first_node_in_group("World")
 @onready var UI = get_tree().get_first_node_in_group("UI")
+@onready var UI3D = get_tree().get_first_node_in_group("UI3D")
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -17,6 +22,8 @@ func _ready() -> void:
 	GlobalSignals.payout.connect(payout)
 	GlobalSignals.updateUI.connect(_update_UI)
 	GlobalSignals.closeTextBoxes.connect(_closeTextBoxes)
+	GlobalSignals.updateUI3D.connect(_update_UI_3D)
+	GlobalSignals.updatePlayerStats.connect(_updatePlayerStats)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -68,17 +75,25 @@ func cloneFresh(caller: CharacterBody2D, PreFab: PackedScene, pos):
 	_update_UI()
 
 func payout(caller: CharacterBody2D):
-	print("Paying out in 1")
+	#print("Paying out in 1")
 	var moneyCalc = 0
 	for e in caller.types:
 		if Types.has(e):
 			moneyCalc += Types.get(e) * caller.mod
-		print("Paying out: ", moneyCalc)
+		#print("Paying out: ", moneyCalc)
 	Money += moneyCalc
 	_update_UI()
 
 func _update_UI():
 	UI.text = ("$ %d" % Money)
+
+func _update_UI_3D():
+	UI3D.update_text()
+	
+func _updatePlayerStats(UFood, UWater, UStress):
+	food += UFood
+	water += UWater
+	stress += UStress
 
 func _closeTextBoxes(caller):
 	print("Close Text Boxes has been called by: ", caller)

@@ -1,17 +1,15 @@
 extends StaticBody3D
 
-@export var Connector : Node3D
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+@export var Connector : Array[Node3D]
+@export var UFood : int = 0
+@export var UWater : int = 0
+@export var UStress : int = 0
+@onready var Layout = $"%SymbolLayout"
 
 func Interact():
 	if Connector != null:
-		if Connector.has_method("Something"):
-			Connector.Something()
+		for c in Connector:
+			if c.has_method("Something"):
+				c.Something()
+				GlobalSignals.updatePlayerStats.emit(UFood, UWater, UStress)
+				GlobalSignals.updateUI3D.emit()

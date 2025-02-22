@@ -19,11 +19,11 @@ func _physics_process(delta: float) -> void:
 			offSprite.hide()
 		else:
 			if Input.is_action_just_pressed("Mouse 1"):
-				print("No interact, but mouse 1")
+				#print("No interact, but mouse 1")
 				GlobalSignals.emit_signal("closeTextBoxes", self)
 	else:
 		onSprite.hide()
 		offSprite.show()
 		if Input.is_action_just_pressed("Mouse 1"):
-			print("No hit, but mouse 1")
+			#print("No hit, but mouse 1")
 			GlobalSignals.emit_signal("closeTextBoxes", self)

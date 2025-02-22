@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://c02tacahtgew1"]
+
+[ext_resource type="Texture2D" uid="uid://bcricbcqjp3og" path="res://Assets/Imported/Toggle.png" id="2_qs8bv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l6abl"]
+transparency = 1
+albedo_texture = ExtResource("2_qs8bv")
+
+[resource]
+next_pass = SubResource("StandardMaterial3D_l6abl")
+transparency = 1
+albedo_texture = ExtResource("2_qs8bv")

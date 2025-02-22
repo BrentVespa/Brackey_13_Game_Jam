@@ -1,0 +1,111 @@
+[gd_scene load_steps=10 format=3 uid="uid://d0xd6pnplsfw4"]
+
+[ext_resource type="Script" path="res://Scripts/Controllers/3D_UI_Controller.gd" id="1_27eli"]
+[ext_resource type="Theme" uid="uid://b4jsb130hm4k3" path="res://Assets/Materials/Food Bar.tres" id="1_amuir"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b7wug"]
+bg_color = Color(0.578566, 0.584616, 0.740671, 0.254902)
+
+[sub_resource type="Theme" id="Theme_bats7"]
+Panel/styles/panel = SubResource("StyleBoxFlat_b7wug")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lg5em"]
+bg_color = Color(0.233925, 0.233925, 0.233925, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tml41"]
+bg_color = Color(0.186771, 0.668617, 0.748063, 1)
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="Theme" id="Theme_ns6ro"]
+ProgressBar/constants/outline_size = 1
+ProgressBar/styles/background = SubResource("StyleBoxFlat_lg5em")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_tml41")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kqs7c"]
+bg_color = Color(0.762141, 0.118393, 0.229737, 1)
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="Theme" id="Theme_o5c2k"]
+ProgressBar/constants/outline_size = 1
+ProgressBar/styles/background = SubResource("StyleBoxFlat_lg5em")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_kqs7c")
+
+[node name="UI3D" type="Control" groups=["UI3D"]]
+layout_mode = 3
+anchor_top = 0.736111
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_27eli")
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+theme = SubResource("Theme_bats7")
+metadata/_edit_use_anchors_ = true
+
+[node name="Food" type="ProgressBar" parent="Panel"]
+unique_name_in_owner = true
+offset_left = 16.0
+offset_top = 6.0
+offset_right = 75.0
+offset_bottom = 133.0
+theme = ExtResource("1_amuir")
+min_value = 1.0
+value = 55.0
+fill_mode = 3
+
+[node name="Label" type="Label" parent="Panel/Food"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 128.0
+offset_right = 48.0
+offset_bottom = 151.0
+text = "Food"
+
+[node name="Water" type="ProgressBar" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 102.0
+offset_top = 8.0
+offset_right = 161.0
+offset_bottom = 135.0
+theme = SubResource("Theme_ns6ro")
+min_value = 1.0
+value = 55.0
+fill_mode = 3
+
+[node name="Label" type="Label" parent="Panel/Water"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 128.0
+offset_right = 48.0
+offset_bottom = 151.0
+text = "Water"
+
+[node name="Stress" type="ProgressBar" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 185.0
+offset_top = 8.0
+offset_right = 244.0
+offset_bottom = 135.0
+theme = SubResource("Theme_o5c2k")
+min_value = 1.0
+value = 55.0
+fill_mode = 3
+
+[node name="Label" type="Label" parent="Panel/Stress"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 128.0
+offset_right = 48.0
+offset_bottom = 151.0
+text = "Stress"

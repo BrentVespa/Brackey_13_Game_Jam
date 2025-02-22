@@ -5,7 +5,7 @@ const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
 var look_dir : Vector2
-@onready var camera : Camera3D = $Camera3D
+@onready var camera : Camera3D = $"%PlayerCamera"
 
 @export var camera_sense : float = 50.0
 @export var sens_mod : float = 1.0

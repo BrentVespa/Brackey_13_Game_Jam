@@ -82,82 +82,68 @@ transform = Transform3D(-0.5539, 0, 0.832583, 0, 1, 0, -0.832583, 0, -0.5539, -0
 [node name="MeshInstance3D3" parent="Character/Node3D/MeshInstance3D" index="1"]
 texture = SubResource("ViewportTexture_t8nfg")
 
-[node name="Objects" type="Node3D" parent="."]
+[node name="Interactable" parent="." instance=ExtResource("3_vqabc")]
+collision_layer = 3
+collision_mask = 3
 
-[node name="Buttons" type="Node3D" parent="Objects"]
-
-[node name="ButtonLights1" parent="Objects/Buttons" node_paths=PackedStringArray("Connector") instance=ExtResource("6_g3yh8")]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -2.07978, 1.30661, 2.05552)
-Connector = [NodePath("../../Lights/Lights1"), NodePath("../../Lights/Lights2"), NodePath("../../Lights/Lights3"), NodePath("../../Lights/Lights4")]
-UFood = -1
-UWater = -2
-UStress = -1
-
-[node name="Symbol1" parent="Objects/Buttons/ButtonLights1/ButtonCase/Button" index="0"]
-mesh = SubResource("PlaneMesh_dqn4p")
-
-[node name="ButtonDoor1" parent="Objects/Buttons" node_paths=PackedStringArray("Connector") instance=ExtResource("6_g3yh8")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -12, 2.82356, 4.18465)
-Connector = [NodePath("../../Doors/Door1")]
-UFood = 1
-UWater = 1
-UStress = 2
-
-[node name="Doors" type="Node3D" parent="Objects"]
-
-[node name="Door1" parent="Objects/Doors" instance=ExtResource("5_g217i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.0734, 3.02544, -0.37305)
-
-[node name="Lights" type="Node3D" parent="Objects"]
-
-[node name="Lights1" parent="Objects/Lights" instance=ExtResource("7_vmet6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.08902, 21.7354, 2.33733)
-
-[node name="SpotLight3D" parent="Objects/Lights/Lights1" index="0"]
-spot_range = 42.1794
-
-[node name="Lights2" parent="Objects/Lights" instance=ExtResource("7_vmet6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.18906, 21.7354, 2.33733)
-
-[node name="SpotLight3D" parent="Objects/Lights/Lights2" index="0"]
-spot_range = 42.1794
-
-[node name="Lights3" parent="Objects/Lights" instance=ExtResource("7_vmet6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.08902, 21.7354, -5.28406)
-
-[node name="SpotLight3D" parent="Objects/Lights/Lights3" index="0"]
-spot_range = 42.1794
-
-[node name="Lights4" parent="Objects/Lights" instance=ExtResource("7_vmet6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.18906, 21.7354, -5.28406)
-
-[node name="SpotLight3D" parent="Objects/Lights/Lights4" index="0"]
-spot_range = 42.1794
-
-[node name="Texts" type="Node3D" parent="Objects"]
-
-[node name="Text" parent="Objects/Texts" instance=ExtResource("4_u2rak")]
+[node name="Text" parent="." instance=ExtResource("4_u2rak")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0.252843, 3.61221, -11.5423)
 
-[node name="Text2" parent="Objects/Texts" instance=ExtResource("4_u2rak")]
+[node name="Text2" parent="." instance=ExtResource("4_u2rak")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0.252843, 4.91016, -11.5423)
 Text = "Smallus Bongus"
 TextBoxText = "Some Body Once Told me"
 
-[node name="Other" type="Node3D" parent="Objects"]
+[node name="Door1" parent="." instance=ExtResource("5_g217i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.0734, 3.02544, -0.37305)
 
-[node name="Interactable" parent="Objects/Other" instance=ExtResource("3_vqabc")]
-collision_layer = 3
-collision_mask = 3
+[node name="ButtonDoor1" parent="." instance=ExtResource("6_g3yh8")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -12, 2.82356, 4.18465)
+UFood = 0
+UWater = 0
+UStress = 0
+
+[node name="Lights1" parent="." instance=ExtResource("7_vmet6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.08902, 21.7354, 2.33733)
+
+[node name="SpotLight3D" parent="Lights1" index="0"]
+spot_range = 42.1794
+
+[node name="Lights2" parent="." instance=ExtResource("7_vmet6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.18906, 21.7354, 2.33733)
+
+[node name="SpotLight3D" parent="Lights2" index="0"]
+spot_range = 42.1794
+
+[node name="Lights3" parent="." instance=ExtResource("7_vmet6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.08902, 21.7354, -5.28406)
+
+[node name="SpotLight3D" parent="Lights3" index="0"]
+spot_range = 42.1794
+
+[node name="Lights4" parent="." instance=ExtResource("7_vmet6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.18906, 21.7354, -5.28406)
+
+[node name="SpotLight3D" parent="Lights4" index="0"]
+spot_range = 42.1794
+
+[node name="ButtonLights1" parent="." instance=ExtResource("6_g3yh8")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -2.07978, 1.30661, 2.05552)
+UFood = 0
+UWater = 0
+UStress = 0
+
+[node name="Symbol1" parent="ButtonLights1/ButtonCase/Button" index="0"]
+mesh = SubResource("PlaneMesh_dqn4p")
 
 [editable path="Character"]
 [editable path="Character/Node3D"]
 [editable path="Character/Node3D/MeshInstance3D/MeshInstance3D3/SubViewport/World_Container"]
 [editable path="Character/Node3D/MeshInstance3D/MeshInstance3D3/SubViewport/World_Container/Button"]
-[editable path="Objects/Buttons/ButtonLights1"]
-[editable path="Objects/Lights/Lights1"]
-[editable path="Objects/Lights/Lights2"]
-[editable path="Objects/Lights/Lights3"]
-[editable path="Objects/Lights/Lights4"]
-[editable path="Objects/Texts/Text"]
-[editable path="Objects/Texts/Text2"]
+[editable path="Text"]
+[editable path="Text2"]
+[editable path="Lights1"]
+[editable path="Lights2"]
+[editable path="Lights3"]
+[editable path="Lights4"]
+[editable path="ButtonLights1"]

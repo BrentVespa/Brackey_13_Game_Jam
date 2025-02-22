@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://cl3gwdt3fpi54"]
+[gd_scene load_steps=10 format=3 uid="uid://cl3gwdt3fpi54"]
 
 [ext_resource type="Script" path="res://Scripts/Controllers/Character_Controller.gd" id="1_01611"]
 [ext_resource type="PackedScene" uid="uid://d317sxpef341o" path="res://Prefabs/Objects/Tomogatchi.tscn" id="1_f22dr"]
 [ext_resource type="Script" path="res://Scripts/InteractRay.gd" id="3_bjmbw"]
 [ext_resource type="Texture2D" uid="uid://cndd8t30a24ib" path="res://Assets/Imported/RingOn.png" id="4_lsa0w"]
 [ext_resource type="Texture2D" uid="uid://ba02t866h4kv8" path="res://Assets/Imported/RingOff.png" id="5_oxqvc"]
+[ext_resource type="PackedScene" uid="uid://d0xd6pnplsfw4" path="res://Prefabs/UI/3DWorldUI.tscn" id="6_vr7mt"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_s8b7g"]
 
@@ -14,6 +15,8 @@
 viewport_path = NodePath("MeshInstance3D/MeshInstance3D3/SubViewport")
 
 [node name="Character" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_01611")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -29,17 +32,15 @@ transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 1.26474, 0.887684, -
 [node name="MeshInstance3D3" parent="Node3D/MeshInstance3D" index="1"]
 texture = SubResource("ViewportTexture_d47ww")
 
-[node name="Button" parent="Node3D/MeshInstance3D/MeshInstance3D3/SubViewport/World_Container" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 85, 0)
-
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="PlayerCamera" type="Camera3D" parent="."]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.329738, 1.25268, 0.20146)
 
-[node name="LookRay" type="RayCast3D" parent="Camera3D"]
+[node name="LookRay" type="RayCast3D" parent="PlayerCamera"]
 target_position = Vector3(0, 0, -3)
 script = ExtResource("3_bjmbw")
 
-[node name="Control" type="Control" parent="Camera3D/LookRay"]
+[node name="Control" type="Control" parent="PlayerCamera/LookRay"]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -50,15 +51,17 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="ON" type="Sprite2D" parent="Camera3D/LookRay/Control"]
+[node name="ON" type="Sprite2D" parent="PlayerCamera/LookRay/Control"]
 unique_name_in_owner = true
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_lsa0w")
 
-[node name="OFF" type="Sprite2D" parent="Camera3D/LookRay/Control"]
+[node name="OFF" type="Sprite2D" parent="PlayerCamera/LookRay/Control"]
 unique_name_in_owner = true
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_oxqvc")
+
+[node name="UI3D" parent="." instance=ExtResource("6_vr7mt")]
 
 [editable path="Node3D"]
 [editable path="Node3D/MeshInstance3D/MeshInstance3D3/SubViewport/World_Container"]

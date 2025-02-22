@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dpiwe2goxcnju"]
 
-[ext_resource type="FontFile" uid="uid://baqa3c4hnueq" path="res://Assets/WorldTextFont.tres" id="1_8gytr"]
+[ext_resource type="FontFile" uid="uid://dt6rvsf6bwn6f" path="res://Assets/WorldTextFont.tres" id="1_8gytr"]
 [ext_resource type="Script" path="res://Scripts/Controllers/Interactable_Text_Controller.gd" id="1_304f3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7gqxw"]
@@ -56,6 +56,8 @@ color = Color(0.192739, 0.356647, 0.24688, 0.32549)
 metadata/_edit_use_anchors_ = true
 
 [node name="Area3D" type="Area3D" parent="."]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_n0t02")

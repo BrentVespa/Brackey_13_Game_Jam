@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Brackeys Game Jam 2025"
+run/main_scene="res://Scenes/TestBox.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -44,6 +45,7 @@ Player="Player Goes Here"
 World="World Goes Here"
 UI="UI goes here"
 Text="Has a visual text box"
+UI3D="The UI for 3D scenes"
 
 [input]
 

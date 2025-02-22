@@ -25,23 +25,6 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0.5, 0.966667, 1, 0, 0, 0.5)
 
-[sub_resource type="Animation" id="Animation_kao0b"]
-length = 0.001
-tracks/0/type = "position_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("DoorRight")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, -0.5)
-tracks/1/type = "position_3d"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("DoorLeft")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0.5)
-
 [sub_resource type="Animation" id="Animation_m2bep"]
 resource_name = "Open"
 tracks/0/type = "position_3d"
@@ -59,6 +42,23 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0.5, 1, 1, 0, 0, 1.5)
 
+[sub_resource type="Animation" id="Animation_kao0b"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DoorRight")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, -0.5)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DoorLeft")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0.5)
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2ankw"]
 _data = {
 "Idle": SubResource("Animation_oj5ds"),
@@ -71,6 +71,8 @@ script = ExtResource("1_rd228")
 
 [node name="DoorRight" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+collision_layer = 3
+collision_mask = 3
 
 [node name="DoorRightMesh" type="MeshInstance3D" parent="DoorRight"]
 mesh = SubResource("BoxMesh_scwkw")
@@ -81,6 +83,8 @@ shape = SubResource("ConvexPolygonShape3D_y4gf0")
 
 [node name="DoorLeft" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+collision_layer = 3
+collision_mask = 3
 
 [node name="DoorLeftMesh" type="MeshInstance3D" parent="DoorLeft"]
 mesh = SubResource("BoxMesh_scwkw")

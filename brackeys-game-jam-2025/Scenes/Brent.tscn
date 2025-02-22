@@ -156,13 +156,6 @@ size = Vector2(21, 572)
 
 [node name="World_Container" type="Node2D" groups=["World"]]
 
-[node name="Button_SpawnPoint#MeshInstance2D" type="MeshInstance2D" parent="."]
-visible = false
-position = Vector2(15.1532, 13.4696)
-rotation = -3.14159
-mesh = SubResource("QuadMesh_8j2t6")
-texture = ExtResource("2_8po0p")
-
 [node name="Unit_Container" type="Node2D" parent="."]
 
 [node name="CharacterBody2D" parent="Unit_Container" instance=ExtResource("2_1bfl8")]
@@ -212,6 +205,12 @@ position = Vector2(60, 86.06)
 
 [node name="SpawnPoint" parent="Button" index="2"]
 position = Vector2(-200, -200)
+
+[node name="Button_SpawnPoint#MeshInstance2D" type="MeshInstance2D" parent="Button/SpawnPoint" index="0"]
+visible = false
+rotation = -3.14159
+mesh = SubResource("QuadMesh_8j2t6")
+texture = ExtResource("2_8po0p")
 
 [node name="Payout Plane" type="Area2D" parent="."]
 position = Vector2(0, 400)

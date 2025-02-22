@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://rhgbd2js8wm2"]
+
+[ext_resource type="Texture2D" uid="uid://dte3ba2t37xe" path="res://Assets/Imported/Door.png" id="1_du6jw"]
+[ext_resource type="Texture2D" uid="uid://bcricbcqjp3og" path="res://Assets/Imported/Toggle.png" id="2_a31f3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l6abl"]
+transparency = 1
+albedo_texture = ExtResource("2_a31f3")
+
+[resource]
+next_pass = SubResource("StandardMaterial3D_l6abl")
+transparency = 1
+albedo_texture = ExtResource("1_du6jw")
