@@ -1,3 +1,5 @@
 [gd_scene format=3 uid="uid://bhfbwi5ldqq5f"]
 
-[node name="Jacob" type="Node2D"]
+[node name="World" type="Node2D"]
+
+[node name="Actors" type="Node2D" parent="."]
