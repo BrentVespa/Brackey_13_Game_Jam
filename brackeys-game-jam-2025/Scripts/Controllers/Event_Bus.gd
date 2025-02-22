@@ -16,6 +16,7 @@ func _ready() -> void:
 	GlobalSignals.cloneFresh.connect(cloneFresh)
 	GlobalSignals.payout.connect(payout)
 	GlobalSignals.updateUI.connect(_update_UI)
+	GlobalSignals.closeTextBoxes.connect(_closeTextBoxes)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -78,3 +79,13 @@ func payout(caller: CharacterBody2D):
 
 func _update_UI():
 	UI.text = ("$ %d" % Money)
+
+func _closeTextBoxes(caller):
+	print("Close Text Boxes has been called by: ", caller)
+	var existingText = get_tree().get_nodes_in_group("Text")
+	for e in existingText:
+		print(e)
+		if e == caller:
+			caller.flip()
+		else:
+			e.hideText()

@@ -29,6 +29,9 @@ transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 1.26474, 0.887684, -
 [node name="MeshInstance3D3" parent="Node3D/MeshInstance3D" index="1"]
 texture = SubResource("ViewportTexture_d47ww")
 
+[node name="Button" parent="Node3D/MeshInstance3D/MeshInstance3D3/SubViewport/World_Container" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 85, 0)
+
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.329738, 1.25268, 0.20146)
 

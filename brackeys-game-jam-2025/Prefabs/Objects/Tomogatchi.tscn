@@ -30,5 +30,8 @@ render_target_update_mode = 4
 
 [node name="World_Container" parent="MeshInstance3D/MeshInstance3D3/SubViewport" instance=ExtResource("1_mjtyp")]
 
+[node name="Button" parent="MeshInstance3D/MeshInstance3D3/SubViewport/World_Container" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 85, 0)
+
 [editable path="MeshInstance3D/MeshInstance3D3/SubViewport/World_Container"]
 [editable path="MeshInstance3D/MeshInstance3D3/SubViewport/World_Container/Button"]

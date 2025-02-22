@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=3 uid="uid://dpiwe2goxcnju"]
+
+[ext_resource type="FontFile" uid="uid://baqa3c4hnueq" path="res://Assets/WorldTextFont.tres" id="1_8gytr"]
+[ext_resource type="Script" path="res://Scripts/Controllers/Interactable_Text_Controller.gd" id="1_304f3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7gqxw"]
+size = Vector3(1, 0.263611, 0.259521)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_n0t02"]
+radius = 0.824759
+
+[node name="StaticBody3D" type="StaticBody3D" groups=["Text"]]
+script = ExtResource("1_304f3")
+TextBoxText = "According to all known laws of aviation, there is no way a bee should be able to fly.Its wings are too small to get its fat little body off the ground.The bee, of course, flies anyway because bees don't care what humans think is impossible.Yellow, black. Yellow, black. Yellow, black. Yellow, black.Ooh, black and yellow!Let's shake it up a little.Barry! Breakfast is ready!Coming!Hang on a second.Hello?Barry?Adam?Can you believe this is happening?I can't.I'll pick you up.Looking sharp."
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00204468, -0.020874)
+shape = SubResource("BoxShape3D_7gqxw")
+
+[node name="Text" type="Sprite3D" parent="."]
+
+[node name="WorldText" type="Label3D" parent="Text"]
+unique_name_in_owner = true
+text = "Bingus Bongus"
+font = ExtResource("1_8gytr")
+
+[node name="TextBox" type="Control" parent="Text"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchor_left = 0.482639
+anchor_right = 0.517361
+anchor_bottom = 0.0617284
+grow_horizontal = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="UIText" type="RichTextLabel" parent="Text/TextBox"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -13.9
+anchor_right = 14.875
+anchor_bottom = 6.65
+grow_horizontal = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="Text/TextBox"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -13.925
+anchor_right = 14.925
+anchor_bottom = 6.625
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.192739, 0.356647, 0.24688, 0.32549)
+metadata/_edit_use_anchors_ = true
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_n0t02")
+
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

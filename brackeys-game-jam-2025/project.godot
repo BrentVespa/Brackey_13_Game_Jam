@@ -43,6 +43,7 @@ Cow="Cows Go Here"
 Player="Player Goes Here"
 World="World Goes Here"
 UI="UI goes here"
+Text="Has a visual text box"
 
 [input]
 

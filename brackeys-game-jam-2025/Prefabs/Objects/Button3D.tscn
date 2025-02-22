@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://dtrlhefqh7kau"]
+
+[ext_resource type="Script" path="res://Scripts/Controllers/Button_Controller.gd" id="1_gbabp"]
+[ext_resource type="Material" uid="uid://eklnjyqu4m7b" path="res://Assets/Materials/DetectorRingON.tres" id="2_ibc2y"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_gyddf"]
+size = Vector3(1, 0.5, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_n1mtn"]
+height = 0.5
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pc5hm"]
+size = Vector3(0.783203, 1, 1)
+
+[node name="Button" type="StaticBody3D"]
+script = ExtResource("1_gbabp")
+
+[node name="ButtonCase" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.137518, 0, 0)
+mesh = SubResource("BoxMesh_gyddf")
+skeleton = NodePath("Button")
+
+[node name="Button" type="MeshInstance3D" parent="ButtonCase"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -6.01112e-09, 0.137518, 0)
+material_override = ExtResource("2_ibc2y")
+mesh = SubResource("CylinderMesh_n1mtn")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.108398, 0, 0)
+shape = SubResource("BoxShape3D_pc5hm")
