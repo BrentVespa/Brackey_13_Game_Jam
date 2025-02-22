@@ -2,4 +2,6 @@
 
 [node name="World" type="Node2D"]
 
-[node name="Actors" type="Node2D" parent="."]
+[node name="Actor" type="Node2D" parent="."]
+
+[node name="Actor_Spawner" type="Node2D" parent="."]

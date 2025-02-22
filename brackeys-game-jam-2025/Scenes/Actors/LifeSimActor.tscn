@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://drlka173pk4d4"]
 
-[ext_resource type="Script" path="res://Scenes/Actors/life_sim_actor.gd" id="1_2c3ub"]
+[ext_resource type="Script" path="res://Scenes/Actors/LifeSimActor.gd" id="1_2c3ub"]
 
 [node name="LifeSimActor" type="Node2D"]
 script = ExtResource("1_2c3ub")
