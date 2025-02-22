@@ -1,0 +1,24 @@
+[gd_resource type="StandardMaterial3D" load_steps=7 format=3 uid="uid://dgsh8kj4tr66d"]
+
+[ext_resource type="Shader" path="res://Assets/Shaders/metal.gdshader" id="1_5gd1b"]
+[ext_resource type="Texture2D" uid="uid://wigbvluatmn3" path="res://Assets/Textures/rusty_metal/diffuse.bmp" id="1_k12m4"]
+[ext_resource type="Texture2D" uid="uid://kqvuokp7pvmg" path="res://Assets/Textures/rusty_metal/normal.bmp" id="3_e0xno"]
+[ext_resource type="Texture2D" uid="uid://ccdghs8g3dw5j" path="res://Assets/Textures/rusty_metal/rough.bmp" id="4_yji8p"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iip1a"]
+render_priority = 0
+shader = ExtResource("1_5gd1b")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_df4jd"]
+
+[resource]
+next_pass = SubResource("ShaderMaterial_iip1a")
+albedo_color = Color(0.6, 0.5031, 0.486, 1)
+albedo_texture = ExtResource("1_k12m4")
+roughness_texture = ExtResource("4_yji8p")
+normal_enabled = true
+normal_texture = ExtResource("3_e0xno")
+rim_tint = 1.0
+refraction_scale = 0.35
+refraction_texture = SubResource("NoiseTexture2D_df4jd")
+refraction_texture_channel = 1

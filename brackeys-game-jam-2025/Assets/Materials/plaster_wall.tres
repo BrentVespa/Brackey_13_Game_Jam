@@ -1,0 +1,24 @@
+[gd_resource type="StandardMaterial3D" load_steps=7 format=3 uid="uid://b2t71g7s3s43d"]
+
+[ext_resource type="Texture2D" uid="uid://1yan7w73xm7" path="res://Assets/Textures/plaster_wall/diffuse.bmp" id="1_c2gqc"]
+[ext_resource type="Shader" path="res://Assets/Shaders/metal.gdshader" id="2_hhdss"]
+[ext_resource type="Texture2D" uid="uid://c03cevwg4d2x6" path="res://Assets/Textures/plaster_wall/normal.bmp" id="3_tei8l"]
+[ext_resource type="Texture2D" uid="uid://cfn31g0jn0apr" path="res://Assets/Textures/plaster_wall/rough.bmp" id="4_al8q1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iip1a"]
+render_priority = 0
+shader = ExtResource("2_hhdss")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_df4jd"]
+
+[resource]
+next_pass = SubResource("ShaderMaterial_iip1a")
+albedo_texture = ExtResource("1_c2gqc")
+roughness_texture = ExtResource("4_al8q1")
+normal_enabled = true
+normal_texture = ExtResource("3_tei8l")
+rim_tint = 1.0
+refraction_scale = 0.35
+refraction_texture = SubResource("NoiseTexture2D_df4jd")
+refraction_texture_channel = 1
+uv1_scale = Vector3(6, 12, 6)
