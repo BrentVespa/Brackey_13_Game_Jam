@@ -1,6 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://bgwfhmd8x4ush"]
+[gd_scene load_steps=14 format=3 uid="uid://bgwfhmd8x4ush"]
 
 [ext_resource type="Script" path="res://Scripts/character_movement_test_3d.gd" id="1_dlm5v"]
+[ext_resource type="Material" uid="uid://bjwg856crn5e2" path="res://Assets/Materials/concrete_floor.tres" id="2_hy17d"]
+[ext_resource type="Material" uid="uid://dgsh8kj4tr66d" path="res://Assets/Materials/rusty_metal.tres" id="2_oc17y"]
+[ext_resource type="Material" uid="uid://df5eynbyhvi1f" path="res://Assets/Materials/metal.tres" id="3_4bjk6"]
+[ext_resource type="Material" uid="uid://bjhe2mn8cpuyo" path="res://Assets/Materials/concrete_wall.tres" id="3_gv6vi"]
+[ext_resource type="Material" uid="uid://b2t71g7s3s43d" path="res://Assets/Materials/plaster_wall.tres" id="4_ofqnl"]
+[ext_resource type="Material" uid="uid://b10b4ioaecemg" path="res://Assets/Materials/metal_corrugated.tres" id="5_rog4u"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hbdpk"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -22,6 +28,9 @@ height = 0.9
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_64bxv"]
 radius = 0.25
 height = 0.9
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_36fqf"]
+albedo_color = Color(0.615686, 0.341176, 0.27451, 1)
 
 [node name="Ryan" type="Node3D"]
 
@@ -50,25 +59,33 @@ use_collision = true
 
 [node name="MainRoomBox" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+material_override = SubResource("StandardMaterial3D_36fqf")
 use_collision = true
 size = Vector3(16, 4, 10)
+material = ExtResource("3_gv6vi")
 
 [node name="RoomCutout" type="CSGBox3D" parent="CSGCombiner3D/MainRoomBox"]
 transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+material_override = ExtResource("3_gv6vi")
 operation = 2
 size = Vector3(15.75, 3.75, 9.75)
+material = ExtResource("3_gv6vi")
 
 [node name="Pipe1" type="CSGCylinder3D" parent="CSGCombiner3D/MainRoomBox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.2441, -0.0258174, 4.03705)
+material_override = ExtResource("2_oc17y")
 height = 3.84192
+material = ExtResource("2_oc17y")
 
 [node name="Pipe2" type="CSGCylinder3D" parent="CSGCombiner3D/MainRoomBox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.88129, -0.0258174, 4.12019)
 height = 3.8501
+material = ExtResource("2_oc17y")
 
 [node name="Pipe3" type="CSGCylinder3D" parent="CSGCombiner3D/MainRoomBox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.51354, -0.0258174, 4.10407)
 height = 3.93744
+material = ExtResource("2_oc17y")
 
 [node name="AquariumBox" type="CSGBox3D" parent="CSGCombiner3D/MainRoomBox"]
 transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, -1.35328, -0.91585, 3.36589)
@@ -97,16 +114,19 @@ size = Vector3(1.24334, 1.15671, 1.58105)
 transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 1.15253, -0.0464026, 0)
 radius = 0.3
 height = 1.17879
+material = ExtResource("2_oc17y")
 
 [node name="ValveControlRoot" type="CSGCylinder3D" parent="CSGCombiner3D/MainRoomBox/MachineBox1/PipeConnector"]
 transform = Transform3D(-4.37114e-08, 1, 2.13163e-14, -1, -4.37114e-08, -8.47033e-22, -4.65885e-22, -2.13163e-14, 1, -0.340188, 0.195601, 0.0221596)
 radius = 0.039
 height = 0.160655
+material = ExtResource("2_oc17y")
 
 [node name="Handle" type="CSGCylinder3D" parent="CSGCombiner3D/MainRoomBox/MachineBox1/PipeConnector/ValveControlRoot"]
 transform = Transform3D(1, -7.52316e-37, 1.61896e-37, 1.69407e-21, 1, 7.10543e-15, -4.03897e-28, -7.10543e-15, 1, 0, -0.0846837, 0)
 radius = 0.175
 height = 0.0308415
+material = ExtResource("2_oc17y")
 
 [node name="ElevatorDoor" type="Node3D" parent="CSGCombiner3D/MainRoomBox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.24424, 0, 0)
@@ -175,6 +195,7 @@ size = Vector3(0.748779, 0.438904, 0.0170898)
 transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, -7.94001, -1.24223, -2.97472)
 operation = 2
 size = Vector3(0.274417, 1.27339, 1.14362)
+material = ExtResource("3_gv6vi")
 
 [node name="Crates2" type="Node3D" parent="CSGCombiner3D/MainRoomBox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.81387, -1.73238, 2.8152)
@@ -238,32 +259,38 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.538055, -0.0612722, 0.37588
 size = Vector3(0.317406, 0.0985146, 0.0252686)
 
 [node name="HallwayBox1" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.32869, 1.17268, -11.7711)
-size = Vector3(3.257, 2.45664, 13.621)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.32869, 1.17268, -13.2031)
+size = Vector3(3.257, 2.45664, 16.4194)
+material = ExtResource("3_gv6vi")
 
 [node name="Cutout" type="CSGBox3D" parent="CSGCombiner3D/HallwayBox1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0122375, -0.0463676, -0.00457001)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0188447, -0.0463676, 0.039897)
 operation = 2
-size = Vector3(3.05304, 2.01479, 13.6614)
+size = Vector3(2.99088, 2.01479, 17.2364)
+material = ExtResource("4_ofqnl")
 
 [node name="CielingPipe1" type="CSGCylinder3D" parent="CSGCombiner3D/HallwayBox1"]
-transform = Transform3D(0.0337075, 0.999256, -0.0187612, -0.999432, 0.0337134, 3.95218e-10, 0.000632504, 0.0187505, 0.999824, 0, 0.779558, -2.29457)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0.709555, -2.29457)
 radius = 0.17
-height = 3.28642
+height = 3.10963
+material = ExtResource("2_oc17y")
 
 [node name="CielingPipe2" type="CSGCylinder3D" parent="CSGCombiner3D/HallwayBox1"]
-transform = Transform3D(0.0337075, 0.999256, -0.0187612, -0.999432, 0.0337134, 3.95218e-10, 0.000632504, 0.0187505, 0.999824, 0, 0.779558, -3.01783)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0.692137, -3.01783)
 radius = 0.17
-height = 3.28642
+height = 3.19444
+material = ExtResource("2_oc17y")
 
 [node name="StorageRoomBox" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.67467, 1.16707, -1.63967)
 size = Vector3(3.371, 2.3, 5.866)
+material = ExtResource("3_gv6vi")
 
 [node name="Cutout" type="CSGBox3D" parent="CSGCombiner3D/StorageRoomBox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.034668, 0.0395203, 0.118317)
 operation = 2
 size = Vector3(3.32715, 2.17096, 5.54425)
+material = ExtResource("3_gv6vi")
 
 [node name="SecurityRoom" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.1459, 1.33759, -10.3483)
@@ -273,74 +300,89 @@ size = Vector3(4.518, 2.83386, 8.00743)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0541701, 0.0290576, -0.397293)
 operation = 2
 size = Vector3(4.26594, 2.48944, 6.84937)
+material = ExtResource("4_ofqnl")
 
 [node name="HallwayDoorCutout" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, 2.94893, 0.805001, -9.91939)
 operation = 2
 size = Vector3(0.337404, 1.29294, 1.14362)
+material = ExtResource("3_gv6vi")
 
 [node name="TurbinesRoomBox" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.51729, 0.163223, -12.5513)
 size = Vector3(14.6953, 5.20456, 13.9642)
+material = ExtResource("3_gv6vi")
 
 [node name="MainCutout" type="CSGBox3D" parent="CSGCombiner3D/TurbinesRoomBox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0550776, 0.0148926, 0.585541)
 operation = 2
 size = Vector3(14.4518, 4.24365, 12.1601)
+material = ExtResource("3_gv6vi")
 
 [node name="InnerRoom" type="CSGBox3D" parent="CSGCombiner3D/TurbinesRoomBox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.57782, -1.11227, 3.10553)
 size = Vector3(3.22327, 2.06323, 7.21106)
+material = ExtResource("4_ofqnl")
 
 [node name="Cutout" type="CSGBox3D" parent="CSGCombiner3D/TurbinesRoomBox/InnerRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.129349, -0.0440063, -0.00606537)
 operation = 2
 size = Vector3(3.2117, 1.88635, 6.96132)
+material = ExtResource("4_ofqnl")
 
 [node name="WindowCutout" type="CSGBox3D" parent="CSGCombiner3D/TurbinesRoomBox/InnerRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.51412, 0, -1.03604)
 operation = 2
 size = Vector3(0.21582, 1, 2.24994)
+material = ExtResource("4_ofqnl")
 
 [node name="InnerRoomDoorCutout" type="CSGBox3D" parent="CSGCombiner3D/TurbinesRoomBox"]
 transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, 4.1218, -1.445, 4.46601)
 operation = 2
 size = Vector3(0.337404, 1.29294, 1.14362)
+material = ExtResource("4_ofqnl")
 
 [node name="Staircase" type="CSGBox3D" parent="CSGCombiner3D/TurbinesRoomBox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.55957, -1.10138, -1.02778)
 size = Vector3(3.20142, 2.05212, 1.04248)
+material = ExtResource("5_rog4u")
 
 [node name="RampCutout" type="CSGBox3D" parent="CSGCombiner3D/TurbinesRoomBox/Staircase"]
 transform = Transform3D(0.753965, -0.656915, 0, 0.656915, 0.753965, 0, 0, 0, 1, -1.01181, 0.620232, 0.020813)
 operation = 2
 size = Vector3(3.99426, 1.71301, 1.20764)
+material = ExtResource("5_rog4u")
 
 [node name="Turbine1" type="CSGCylinder3D" parent="CSGCombiner3D/TurbinesRoomBox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.13593, -1.67995, 3.8711)
 radius = 2.126
 height = 1.50684
 sides = 16
+material = ExtResource("2_oc17y")
 
 [node name="Turbine2" type="CSGCylinder3D" parent="CSGCombiner3D/TurbinesRoomBox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.13593, -1.67995, -2.4024)
 radius = 2.126
 height = 1.50684
 sides = 16
+material = ExtResource("2_oc17y")
 
 [node name="CatWalk" type="CSGBox3D" parent="CSGCombiner3D/TurbinesRoomBox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.67214, -0.24915, 6.18729)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.67214, -0.160597, 6.18729)
 size = Vector3(11.3291, 0.123047, 1)
+material = ExtResource("5_rog4u")
 
 [node name="HallwayDoorCutout2" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, -0.304541, 0.776801, -9.89815)
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, -0.244133, 0.776801, -9.89815)
 operation = 2
 size = Vector3(0.274417, 1.27339, 1.14362)
+material = ExtResource("3_gv6vi")
 
 [node name="HallwayDoorCutout3" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(-4.37113e-08, 0, -1, 0, 1, 0, 0.999999, 0, -4.37114e-08, 1.34641, 0.757774, -4.95646)
 operation = 2
 size = Vector3(0.274417, 1.27339, 1.14362)
+material = ExtResource("3_gv6vi")
 
 [node name="TurbineStorageVentBox" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5774, 0.752145, -5.12753)
@@ -350,3 +392,153 @@ size = Vector3(1.211, 1.1, 1.422)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5234, 0.783122, -5.19357)
 operation = 2
 size = Vector3(1, 1, 2.002)
+material = ExtResource("3_gv6vi")
+
+[node name="GiganticPipesRoomBox" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.9019, 0.512817, -12.4801)
+size = Vector3(6.11755, 5.94067, 13.7957)
+material = ExtResource("3_gv6vi")
+
+[node name="Cutout" type="CSGBox3D" parent="CSGCombiner3D/GiganticPipesRoomBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20645, 0.0692692, 0.043396)
+operation = 2
+size = Vector3(5.55105, 5.2646, 13.4594)
+material = ExtResource("3_gv6vi")
+
+[node name="Staircase" type="CSGBox3D" parent="CSGCombiner3D/GiganticPipesRoomBox"]
+transform = Transform3D(0.818492, -0.574441, -0.00941161, 0.574518, 0.81838, 0.0135251, -6.70847e-05, -0.0164773, 0.999864, 0.411802, -1.5675, 6.29132)
+size = Vector3(3.90149, 0.129929, 1.04248)
+material = ExtResource("5_rog4u")
+
+[node name="HUMONGOUS_PIPE1" type="CSGCylinder3D" parent="CSGCombiner3D/GiganticPipesRoomBox"]
+transform = Transform3D(0.660002, -0.751264, 0, 0.751264, 0.660002, 0, 0, 0, 1, -1.01529, -0.493281, 3.0007)
+radius = 1.256
+height = 9.3939
+sides = 18
+material = ExtResource("2_oc17y")
+
+[node name="ValveControlCore" type="CSGCylinder3D" parent="CSGCombiner3D/GiganticPipesRoomBox/HUMONGOUS_PIPE1"]
+transform = Transform3D(-1, -8.74228e-08, 0, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0.149084, -1.20893, 0.212934)
+radius = 0.153
+height = 2.79028
+material = ExtResource("3_4bjk6")
+
+[node name="Handle" type="CSGCylinder3D" parent="CSGCombiner3D/GiganticPipesRoomBox/HUMONGOUS_PIPE1/ValveControlCore"]
+transform = Transform3D(1, -6.61724e-24, -1.01428e-36, 1.69407e-21, 1, 7.10543e-15, 3.23683e-36, -7.10543e-15, 1, 0, -1.40628, 0)
+radius = 0.338
+height = 0.046
+material = ExtResource("3_4bjk6")
+
+[node name="HUMONGOUS_PIPE2" type="CSGCylinder3D" parent="CSGCombiner3D/GiganticPipesRoomBox"]
+transform = Transform3D(0.659451, -0.751748, 0, 0.751748, 0.659451, 0, 0, 0, 1, -1.01529, -0.493281, -2.19531)
+radius = 1.256
+height = 9.39704
+sides = 18
+material = ExtResource("2_oc17y")
+
+[node name="Hole" type="CSGSphere3D" parent="CSGCombiner3D/GiganticPipesRoomBox/HUMONGOUS_PIPE2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.695536, -0.446265, 0.185007)
+operation = 2
+radius = 0.931564
+material = ExtResource("2_oc17y")
+
+[node name="HUMONGOUS_PIPE2_CUTOUT" type="CSGCylinder3D" parent="CSGCombiner3D/GiganticPipesRoomBox/HUMONGOUS_PIPE2"]
+operation = 2
+radius = 1.2
+height = 10.2434
+material = ExtResource("2_oc17y")
+
+[node name="Valve" type="CSGCylinder3D" parent="CSGCombiner3D/GiganticPipesRoomBox/HUMONGOUS_PIPE2"]
+transform = Transform3D(0.698491, 0.715621, 0, -0.715621, 0.698491, 0, 0, 0, 1, 0.0736198, -1.44535, 0)
+radius = 1.1781
+height = 0.087
+sides = 18
+material = ExtResource("3_4bjk6")
+
+[node name="ValveControlCore" type="CSGCylinder3D" parent="CSGCombiner3D/GiganticPipesRoomBox/HUMONGOUS_PIPE2/Valve"]
+transform = Transform3D(1, 2.64698e-23, 4.47035e-08, 4.47035e-08, 1.91069e-15, -1, 0, 1, 1.91069e-15, 0, 0, -0.165827)
+radius = 0.153
+height = 2.79028
+material = ExtResource("3_4bjk6")
+
+[node name="Handle" type="CSGCylinder3D" parent="CSGCombiner3D/GiganticPipesRoomBox/HUMONGOUS_PIPE2/Valve/ValveControlCore"]
+transform = Transform3D(1, -6.61724e-24, -1.01428e-36, 1.69407e-21, 1, 7.10543e-15, 3.23683e-36, -7.10543e-15, 1, 0, -1.40628, 0)
+radius = 0.338
+height = 0.046
+material = ExtResource("3_4bjk6")
+
+[node name="HUMONGOUS_PIPE2_CUTOUT" type="CSGCylinder3D" parent="CSGCombiner3D/GiganticPipesRoomBox"]
+transform = Transform3D(0.660002, -0.751264, 0, 0.751264, 0.660002, 0, 0, 0, 1, -2.36625, 0.681279, -2.195)
+operation = 2
+radius = 1.2
+height = 4.48251
+material = ExtResource("2_oc17y")
+
+[node name="CatWalk" type="CSGBox3D" parent="CSGCombiner3D/GiganticPipesRoomBox"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.47289, -0.429913, 1.23674)
+size = Vector3(11.3291, 0.123047, 1)
+material = ExtResource("5_rog4u")
+
+[node name="TurbinesCatwalkDoorCutout" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, -14.8597, 0.805001, -6.37204)
+operation = 2
+size = Vector3(0.337404, 1.29294, 0.915963)
+material = ExtResource("3_gv6vi")
+
+[node name="FactoryRoomBox" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.25812, 0.947021, -29.0686)
+size = Vector3(33.3361, 5.66104, 15.4588)
+material = ExtResource("3_gv6vi")
+
+[node name="Cutout" type="CSGBox3D" parent="CSGCombiner3D/FactoryRoomBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0801697, -0.0682983, -0.0830841)
+operation = 2
+size = Vector3(32.9977, 4.89856, 15.0175)
+material = ExtResource("3_gv6vi")
+
+[node name="ElevatedWalkway" type="CSGBox3D" parent="CSGCombiner3D/FactoryRoomBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.72968, -1.72553, 6.72013)
+size = Vector3(16.6417, 1.76868, 1.42844)
+material = ExtResource("5_rog4u")
+
+[node name="RampCutout" type="CSGBox3D" parent="CSGCombiner3D/FactoryRoomBox/ElevatedWalkway"]
+transform = Transform3D(0.425037, 2.09876e-08, 0.905176, 0.905176, -5.81455e-08, -0.425037, 4.37114e-08, 1, -4.37114e-08, 6.70587, 0.898945, 0.297268)
+operation = 2
+size = Vector3(1.87219, 2.46076, 6.7886)
+material = ExtResource("5_rog4u")
+
+[node name="Desk1" type="Node3D" parent="CSGCombiner3D/FactoryRoomBox"]
+transform = Transform3D(0.938511, 0, -0.345249, 0, 1, 0, 0.345249, 0, 0.938511, -15.0606, -2.33437, 2.95792)
+
+[node name="DeskBox" type="CSGBox3D" parent="CSGCombiner3D/FactoryRoomBox/Desk1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0161755, 0.0993119, 0.219602)
+size = Vector3(1.45117, 0.368896, 0.725)
+
+[node name="BottomCutout" type="CSGBox3D" parent="CSGCombiner3D/FactoryRoomBox/Desk1/DeskBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.146387, -0.0242996, -0.00765991)
+operation = 2
+size = Vector3(0.995714, 0.322342, 0.795349)
+
+[node name="Cabinet1" type="CSGBox3D" parent="CSGCombiner3D/FactoryRoomBox/Desk1/DeskBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.535924, 0.0801748, 0.375887)
+size = Vector3(0.317406, 0.0985146, 0.0252686)
+
+[node name="Cabinet2" type="CSGBox3D" parent="CSGCombiner3D/FactoryRoomBox/Desk1/DeskBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.538055, -0.0612722, 0.375887)
+size = Vector3(0.317406, 0.0985146, 0.0252686)
+
+[node name="HallwayDoorCutout4" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(-4.37113e-08, 0, -1, 0, 1, 0, 0.999999, 0, -4.37114e-08, 1.34708, 1.01603, -21.4941)
+operation = 2
+size = Vector3(0.49588, 1.78989, 2.39397)
+material = ExtResource("3_gv6vi")
+
+[node name="Floor1" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.73303, 0.113373, -0.0894699)
+size = Vector3(19.1741, 0.0409546, 9.79063)
+material = ExtResource("2_hy17d")
+
+[node name="Floor2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.53458, 0.113373, -13.2737)
+size = Vector3(7.64152, 0.0409546, 16.5542)
+material = ExtResource("2_hy17d")
