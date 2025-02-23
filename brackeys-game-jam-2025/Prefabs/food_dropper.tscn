@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://pck6o3kr4bht"]
+
+[ext_resource type="Script" path="res://Scripts/food_dropper.gd" id="1_rsqik"]
+[ext_resource type="PackedScene" uid="uid://dw0asp048e32s" path="res://Prefabs/food.tscn" id="2_6yy7w"]
+[ext_resource type="Material" uid="uid://dqjbp27o7y527" path="res://Assets/Materials/Symbols/Food.tres" id="3_tmgc8"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_r7gey"]
+material = ExtResource("3_tmgc8")
+
+[node name="FoodDropper" type="CSGCombiner3D"]
+script = ExtResource("1_rsqik")
+foodToSpawn = ExtResource("2_6yy7w")
+
+[node name="Spawner" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0383924, -0.584778, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Spawner"]
+transform = Transform3D(-1.09278e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, -1.09278e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_r7gey")
+
+[node name="CSGMesh3D" type="CSGCylinder3D" parent="."]
+height = 1.0
+
+[node name="CSGMesh3D2" type="CSGCylinder3D" parent="CSGMesh3D"]
+operation = 2
+radius = 0.422972
+height = 1.0
+
+[node name="CSGMesh3D4" type="CSGCylinder3D" parent="CSGMesh3D"]
+transform = Transform3D(0.849893, -0.526956, 0, 0.526956, 0.849893, 0, 0, 0, 1, -0.0588057, 0.486391, 0)
+operation = 2
+radius = 0.422972
+height = 1.0
+
+[node name="CSGMesh3D3" type="CSGCylinder3D" parent="CSGMesh3D"]
+transform = Transform3D(0.883381, -0.468655, 0, 0.468655, 0.883381, 0, 0, 0, 1, -0.116974, 0.486391, 0)
+height = 1.0
+
+[node name="CSGMesh3D5" type="CSGCylinder3D" parent="CSGMesh3D/CSGMesh3D3"]
+transform = Transform3D(0.849893, 0.526956, 0, -0.526956, 0.849893, 0, 0, 0, 1, -0.206328, -0.444368, 0)
+operation = 2
+radius = 0.422972
+height = 1.0
+
+[node name="CSGMesh3D2" type="CSGCylinder3D" parent="CSGMesh3D/CSGMesh3D3"]
+operation = 2
+radius = 0.422972
+height = 1.0

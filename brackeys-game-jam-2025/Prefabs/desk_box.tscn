@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://bb7bryd4qf7xi"]
+
+[ext_resource type="Material" uid="uid://lhjp0d5gjme2" path="res://Assets/Materials/TestBox.tres" id="1_3jw41"]
+[ext_resource type="Material" uid="uid://lngb0xss4ned" path="res://Assets/Materials/Light.tres" id="2_geyyy"]
+[ext_resource type="Material" uid="uid://gt0d8p8xey1c" path="res://Assets/Materials/Color2.tres" id="2_n253j"]
+
+[node name="DeskBox" type="CSGBox3D"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+layers = 3
+material_override = ExtResource("1_3jw41")
+use_collision = true
+size = Vector3(1.45117, 0.368896, 0.725)
+
+[node name="BottomCutout" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.146387, -0.0242996, -0.00765991)
+operation = 2
+size = Vector3(0.995714, 0.322342, 0.795349)
+material = ExtResource("1_3jw41")
+
+[node name="Cabinet1" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.535924, 0.0801748, 0.375887)
+size = Vector3(0.317406, 0.0985146, 0.0252686)
+material = ExtResource("2_n253j")
+
+[node name="Cabinet2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.538055, -0.0612722, 0.375887)
+size = Vector3(0.317406, 0.0985146, 0.0252686)
+material = ExtResource("2_n253j")
+
+[node name="MeshInstance3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.107611, 0.673805)
+material_override = ExtResource("2_geyyy")
+radius = 0.153
+height = 0.2
+material = ExtResource("2_n253j")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00677329, 0.169611, 0.118776)
+size = Vector3(0.242188, 0.540466, 0.0766602)
+material = ExtResource("2_n253j")

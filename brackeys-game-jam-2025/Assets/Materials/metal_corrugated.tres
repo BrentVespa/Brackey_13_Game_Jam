@@ -24,4 +24,4 @@ rim_tint = 1.0
 refraction_scale = 0.35
 refraction_texture = SubResource("NoiseTexture2D_df4jd")
 refraction_texture_channel = 1
-uv1_scale = Vector3(1, 5, 1)
+uv1_scale = Vector3(1.769, 8.845, 1.769)

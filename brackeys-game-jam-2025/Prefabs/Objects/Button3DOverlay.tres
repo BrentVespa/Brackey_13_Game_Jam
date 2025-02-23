@@ -1,7 +1,7 @@
 [gd_resource type="PlaneMesh" load_steps=2 format=3 uid="uid://8s7cqc15iugu"]
 
-[ext_resource type="Material" uid="uid://rhgbd2js8wm2" path="res://Assets/Materials/Symbols/DoorSymbol.tres" id="1_epis8"]
+[ext_resource type="Material" uid="uid://cqfb8yyd7gx28" path="res://Assets/Materials/Symbols/Light.tres" id="1_ccr5p"]
 
 [resource]
-material = ExtResource("1_epis8")
+material = ExtResource("1_ccr5p")
 size = Vector2(0.75, 0.75)

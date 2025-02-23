@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Controllers/Light_Controller.gd" id="1_3fnyn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8rkjb"]
-albedo_color = Color(0.948379, 0.675811, 0.93814, 1)
+albedo_color = Color(0.122402, 0.002708, 0.123753, 1)
 emission_enabled = true
 
 [sub_resource type="QuadMesh" id="QuadMesh_14iig"]
@@ -15,6 +15,7 @@ script = ExtResource("1_3fnyn")
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+light_energy = 0.0
 spot_range = 58.5452
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

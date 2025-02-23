@@ -53,6 +53,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Food" type="ProgressBar" parent="Panel"]
 unique_name_in_owner = true
+layout_mode = 0
 offset_left = 16.0
 offset_top = 6.0
 offset_right = 75.0
@@ -101,6 +102,7 @@ theme = SubResource("Theme_o5c2k")
 min_value = 1.0
 value = 55.0
 fill_mode = 3
+metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="Panel/Stress"]
 layout_mode = 0
@@ -108,4 +110,4 @@ offset_left = 8.0
 offset_top = 128.0
 offset_right = 48.0
 offset_bottom = 151.0
-text = "Stress"
+text = "Calm"

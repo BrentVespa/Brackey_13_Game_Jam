@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Brackeys Game Jam 2025"
-run/main_scene="res://Scenes/TestBox.tscn"
+run/main_scene="res://Scenes/Ryan.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 GlobalSignals="*res://Scripts/Controllers/Global_Signals.gd"
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 EventBus="*res://Scripts/Controllers/Event_Bus.gd"
+PaController="*res://Scripts/Controllers/PA_Controller.gd"
 
 [editor_plugins]
 
@@ -46,6 +47,9 @@ World="World Goes Here"
 UI="UI goes here"
 Text="Has a visual text box"
 UI3D="The UI for 3D scenes"
+Tran=""
+PA=""
+Tomogatchi=""
 
 [input]
 
@@ -98,6 +102,11 @@ look_down={
 "Mouse 2"={
 "deadzone": 0.5,
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":2,"position":Vector2(341, 0),"global_position":Vector2(350, 46),"factor":1.0,"button_index":2,"canceled":false,"pressed":true,"double_click":false,"script":null)
+]
+}
+cap={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":90,"key_label":0,"unicode":122,"location":0,"echo":false,"script":null)
 ]
 }
 

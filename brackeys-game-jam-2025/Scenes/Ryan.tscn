@@ -1,15 +1,32 @@
-[gd_scene load_steps=14 format=3 uid="uid://bgwfhmd8x4ush"]
+[gd_scene load_steps=44 format=3 uid="uid://bgwfhmd8x4ush"]
 
-[ext_resource type="Script" path="res://Scripts/character_movement_test_3d.gd" id="1_dlm5v"]
+[ext_resource type="Material" uid="uid://lhjp0d5gjme2" path="res://Assets/Materials/TestBox.tres" id="1_q4d32"]
 [ext_resource type="Material" uid="uid://bjwg856crn5e2" path="res://Assets/Materials/concrete_floor.tres" id="2_hy17d"]
 [ext_resource type="Material" uid="uid://dgsh8kj4tr66d" path="res://Assets/Materials/rusty_metal.tres" id="2_oc17y"]
 [ext_resource type="Material" uid="uid://df5eynbyhvi1f" path="res://Assets/Materials/metal.tres" id="3_4bjk6"]
 [ext_resource type="Material" uid="uid://bjhe2mn8cpuyo" path="res://Assets/Materials/concrete_wall.tres" id="3_gv6vi"]
 [ext_resource type="Material" uid="uid://b2t71g7s3s43d" path="res://Assets/Materials/plaster_wall.tres" id="4_ofqnl"]
 [ext_resource type="Material" uid="uid://b10b4ioaecemg" path="res://Assets/Materials/metal_corrugated.tres" id="5_rog4u"]
+[ext_resource type="PackedScene" uid="uid://cl3gwdt3fpi54" path="res://Prefabs/TestCharacter.tscn" id="7_ae05j"]
+[ext_resource type="PackedScene" uid="uid://bb7bryd4qf7xi" path="res://Prefabs/desk_box.tscn" id="7_e7pug"]
+[ext_resource type="PackedScene" uid="uid://dtrlhefqh7kau" path="res://Prefabs/Objects/Button3D.tscn" id="8_nux13"]
+[ext_resource type="PackedScene" uid="uid://bb8by4ovo715f" path="res://Prefabs/Turbin.tscn" id="8_qj5x3"]
+[ext_resource type="Material" uid="uid://cqfb8yyd7gx28" path="res://Assets/Materials/Symbols/Light.tres" id="9_gtr2c"]
+[ext_resource type="PackedScene" uid="uid://pck6o3kr4bht" path="res://Prefabs/food_dropper.tscn" id="9_uun4i"]
+[ext_resource type="PackedScene" uid="uid://br8kgqyvf4ueg" path="res://Prefabs/Objects/Door.tscn" id="10_exy5t"]
+[ext_resource type="PackedScene" uid="uid://dtwvn2fxf5745" path="res://Prefabs/Objects/lights.tscn" id="11_8rl80"]
+[ext_resource type="PackedScene" uid="uid://dpiwe2goxcnju" path="res://Prefabs/Objects/InteractableText.tscn" id="12_h5sr6"]
+[ext_resource type="Material" uid="uid://rhgbd2js8wm2" path="res://Assets/Materials/Symbols/DoorSymbol.tres" id="12_hiel4"]
+[ext_resource type="PackedScene" uid="uid://b3vn16gjylfcq" path="res://Prefabs/interactable.tscn" id="13_d7i5l"]
+[ext_resource type="Material" uid="uid://dtlds51by8ej6" path="res://Assets/Materials/Rock.tres" id="15_el8cj"]
+[ext_resource type="Script" path="res://Scripts/Controllers/Transition_Controller.gd" id="16_bqx4n"]
+[ext_resource type="PackedScene" uid="uid://d317sxpef341o" path="res://Prefabs/Objects/Tomogatchi.tscn" id="18_hccmi"]
+[ext_resource type="Script" path="res://Scripts/pick_up_tomogatchi.gd" id="19_y4oro"]
+[ext_resource type="PackedScene" uid="uid://djtbi0c46tdr8" path="res://Prefabs/Paper.tscn" id="23_qgbet"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hbdpk"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+sky_top_color = Color(0.0905867, 0.116999, 0.153729, 1)
+sky_horizon_color = Color(0.25678, 0.263616, 0.274406, 1)
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 
 [sub_resource type="Sky" id="Sky_he1ud"]
@@ -21,16 +38,145 @@ sky = SubResource("Sky_he1ud")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_5k66p"]
-radius = 0.25
-height = 0.9
+[sub_resource type="PlaneMesh" id="PlaneMesh_64csh"]
+material = ExtResource("9_gtr2c")
+size = Vector2(0.75, 0.75)
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_64bxv"]
-radius = 0.25
-height = 0.9
+[sub_resource type="PlaneMesh" id="PlaneMesh_xwvfg"]
+material = ExtResource("12_hiel4")
+size = Vector2(0.75, 0.75)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_36fqf"]
-albedo_color = Color(0.615686, 0.341176, 0.27451, 1)
+[sub_resource type="PlaneMesh" id="PlaneMesh_ykfat"]
+material = ExtResource("12_hiel4")
+size = Vector2(0.75, 0.75)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_l3j51"]
+material = ExtResource("12_hiel4")
+size = Vector2(0.75, 0.75)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_86ngn"]
+material = ExtResource("12_hiel4")
+size = Vector2(0.75, 0.75)
+
+[sub_resource type="QuadMesh" id="QuadMesh_hcp68"]
+material = ExtResource("15_el8cj")
+size = Vector2(5.055, 4.01)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_a15yp"]
+data = PackedVector3Array(2.5275, -2.005, 0, -2.5275, -2.005, 0, 2.5275, 2.005, 0, -2.5275, -2.005, 0, -2.5275, 2.005, 0, 2.5275, 2.005, 0)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_iipje"]
+load_path = "res://.godot/imported/Plant.png-373b25996636761f53068451d87b16bf.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hnmwt"]
+transparency = 1
+albedo_texture = SubResource("CompressedTexture2D_iipje")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_5pyxx"]
+material = SubResource("StandardMaterial3D_hnmwt")
+size = Vector2(0.75, 0.75)
+
+[sub_resource type="Animation" id="Animation_pan4y"]
+resource_name = "Fail"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.933333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.966667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_fail"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_tv7px"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_i38yw"]
+resource_name = "Tran"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_n0ror"]
+resource_name = "Win"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2.03333, 4.96667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(4.96667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_fail"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uqfnc"]
+_data = {
+"Fail": SubResource("Animation_pan4y"),
+"RESET": SubResource("Animation_tv7px"),
+"Tran": SubResource("Animation_i38yw"),
+"Win": SubResource("Animation_n0ror")
+}
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_m8ojb"]
+radius = 1.42671
+
+[sub_resource type="BoxMesh" id="BoxMesh_lxlq6"]
 
 [node name="Ryan" type="Node3D"]
 
@@ -39,222 +185,222 @@ environment = SubResource("Environment_gm11j")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+light_color = Color(0.051971, 0.051971, 0.051971, 1)
 shadow_enabled = true
 
-[node name="CharacterReference" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.611944, 0)
-script = ExtResource("1_dlm5v")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterReference"]
-mesh = SubResource("CapsuleMesh_5k66p")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterReference"]
-shape = SubResource("CapsuleShape3D_64bxv")
-
-[node name="Camera3D" type="Camera3D" parent="CharacterReference"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.167447, 0)
-
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 use_collision = true
+collision_layer = 3
+collision_mask = 3
 
-[node name="MainRoomBox" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-material_override = SubResource("StandardMaterial3D_36fqf")
+[node name="A" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -0.0725868)
+material_override = ExtResource("1_q4d32")
 use_collision = true
-size = Vector3(16, 4, 10)
+size = Vector3(16, 4, 10.3203)
 material = ExtResource("3_gv6vi")
 
-[node name="RoomCutout" type="CSGBox3D" parent="CSGCombiner3D/MainRoomBox"]
-transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+[node name="RoomCutout" type="CSGBox3D" parent="CSGCombiner3D/A"]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0187988, 0.00634766)
 material_override = ExtResource("3_gv6vi")
 operation = 2
-size = Vector3(15.75, 3.75, 9.75)
+size = Vector3(15.75, 3.7124, 9.7373)
 material = ExtResource("3_gv6vi")
 
-[node name="Pipe1" type="CSGCylinder3D" parent="CSGCombiner3D/MainRoomBox"]
+[node name="Pipe1" type="CSGCylinder3D" parent="CSGCombiner3D/A"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.2441, -0.0258174, 4.03705)
 material_override = ExtResource("2_oc17y")
 height = 3.84192
 material = ExtResource("2_oc17y")
 
-[node name="Pipe2" type="CSGCylinder3D" parent="CSGCombiner3D/MainRoomBox"]
+[node name="Pipe2" type="CSGCylinder3D" parent="CSGCombiner3D/A"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.88129, -0.0258174, 4.12019)
 height = 3.8501
 material = ExtResource("2_oc17y")
 
-[node name="Pipe3" type="CSGCylinder3D" parent="CSGCombiner3D/MainRoomBox"]
+[node name="Pipe3" type="CSGCylinder3D" parent="CSGCombiner3D/A"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.51354, -0.0258174, 4.10407)
 height = 3.93744
 material = ExtResource("2_oc17y")
 
-[node name="AquariumBox" type="CSGBox3D" parent="CSGCombiner3D/MainRoomBox"]
+[node name="AquariumBox" type="CSGBox3D" parent="CSGCombiner3D/A"]
 transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, -1.35328, -0.91585, 3.36589)
 size = Vector3(6.77223, 1.96617, 3.1)
 
-[node name="AquariumCutout" type="CSGBox3D" parent="CSGCombiner3D/MainRoomBox/AquariumBox"]
+[node name="AquariumCutout" type="CSGBox3D" parent="CSGCombiner3D/A/AquariumBox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.013971, -0.0400574, 0.0809665)
 operation = 2
 size = Vector3(6.52623, 1.86989, 3.05)
 
-[node name="FrontWindowCutout" type="CSGBox3D" parent="CSGCombiner3D/MainRoomBox/AquariumBox"]
+[node name="FrontWindowCutout" type="CSGBox3D" parent="CSGCombiner3D/A/AquariumBox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0237215, 0.0229751, -1.47092)
 operation = 2
 size = Vector3(6.05505, 1.37395, 0.321167)
 
-[node name="SideWindowCutout" type="CSGBox3D" parent="CSGCombiner3D/MainRoomBox/AquariumBox"]
+[node name="SideWindowCutout" type="CSGBox3D" parent="CSGCombiner3D/A/AquariumBox"]
 transform = Transform3D(-4.37116e-08, 0, 1, 0, 1, 0, -0.999999, 0, -4.37114e-08, -3.33659, 0.0193011, 0.0310974)
 operation = 2
 size = Vector3(2.45106, 1.34217, 0.125)
 
-[node name="MachineBox1" type="CSGBox3D" parent="CSGCombiner3D/MainRoomBox"]
+[node name="MachineBox1" type="CSGBox3D" parent="CSGCombiner3D/A"]
 transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, 2.65056, -1.3116, 4.10381)
 size = Vector3(1.24334, 1.15671, 1.58105)
 
-[node name="PipeConnector" type="CSGCylinder3D" parent="CSGCombiner3D/MainRoomBox/MachineBox1"]
+[node name="PipeConnector" type="CSGCylinder3D" parent="CSGCombiner3D/A/MachineBox1"]
 transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 1.15253, -0.0464026, 0)
 radius = 0.3
 height = 1.17879
 material = ExtResource("2_oc17y")
 
-[node name="ValveControlRoot" type="CSGCylinder3D" parent="CSGCombiner3D/MainRoomBox/MachineBox1/PipeConnector"]
+[node name="ValveControlRoot" type="CSGCylinder3D" parent="CSGCombiner3D/A/MachineBox1/PipeConnector"]
 transform = Transform3D(-4.37114e-08, 1, 2.13163e-14, -1, -4.37114e-08, -8.47033e-22, -4.65885e-22, -2.13163e-14, 1, -0.340188, 0.195601, 0.0221596)
 radius = 0.039
 height = 0.160655
 material = ExtResource("2_oc17y")
 
-[node name="Handle" type="CSGCylinder3D" parent="CSGCombiner3D/MainRoomBox/MachineBox1/PipeConnector/ValveControlRoot"]
+[node name="Handle" type="CSGCylinder3D" parent="CSGCombiner3D/A/MachineBox1/PipeConnector/ValveControlRoot"]
 transform = Transform3D(1, -7.52316e-37, 1.61896e-37, 1.69407e-21, 1, 7.10543e-15, -4.03897e-28, -7.10543e-15, 1, 0, -0.0846837, 0)
 radius = 0.175
 height = 0.0308415
 material = ExtResource("2_oc17y")
 
-[node name="ElevatorDoor" type="Node3D" parent="CSGCombiner3D/MainRoomBox"]
+[node name="ElevatorDoor" type="Node3D" parent="CSGCombiner3D/A"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.24424, 0, 0)
 
-[node name="ElevatorControlPanel" type="CSGBox3D" parent="CSGCombiner3D/MainRoomBox/ElevatorDoor"]
+[node name="ElevatorControlPanel" type="CSGBox3D" parent="CSGCombiner3D/A/ElevatorDoor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.622716, -1.38532, 0.728891)
+material_override = ExtResource("3_4bjk6")
 size = Vector3(0.05, 0.343689, 0.14895)
 
-[node name="ButtonUp" type="CSGCylinder3D" parent="CSGCombiner3D/MainRoomBox/ElevatorDoor/ElevatorControlPanel"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.0356369, 0.0561458, 0)
-radius = 0.036
-height = 0.03
-
-[node name="ButtonDown" type="CSGCylinder3D" parent="CSGCombiner3D/MainRoomBox/ElevatorDoor/ElevatorControlPanel"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.0384321, -0.0733379, 0)
-radius = 0.036
-height = 0.03
-
-[node name="ElevatorDisplay" type="CSGBox3D" parent="CSGCombiner3D/MainRoomBox/ElevatorDoor"]
+[node name="ElevatorDisplay" type="CSGBox3D" parent="CSGCombiner3D/A/ElevatorDoor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.624447, -0.424649, -0.0180465)
+material_override = ExtResource("1_q4d32")
 size = Vector3(0.05, 0.2, 0.8)
 
-[node name="ElevatorDoorCutout" type="CSGBox3D" parent="CSGCombiner3D/MainRoomBox"]
-transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, 7.92687, -1.24223, -0.0317292)
+[node name="Lights" parent="CSGCombiner3D/A/ElevatorDoor" instance=ExtResource("11_8rl80")]
+transform = Transform3D(0.333333, 0, 0, 0, 0.333333, 0, 0, 0, 0.333333, 0.50183, -0.469319, 0.260817)
+
+[node name="SpotLight3D" parent="CSGCombiner3D/A/ElevatorDoor/Lights" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.148487, 0, 0)
+light_energy = 1.0
+
+[node name="MeshInstance3D" parent="CSGCombiner3D/A/ElevatorDoor/Lights" index="1"]
+visible = false
+
+[node name="Lights2" parent="CSGCombiner3D/A/ElevatorDoor" instance=ExtResource("11_8rl80")]
+transform = Transform3D(0.333333, 0, 0, 0, 0.333333, 0, 0, 0, 0.333333, 0.50183, -0.469319, -0.249727)
+
+[node name="SpotLight3D" parent="CSGCombiner3D/A/ElevatorDoor/Lights2" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.148487, 0, 0)
+light_energy = 1.0
+
+[node name="MeshInstance3D" parent="CSGCombiner3D/A/ElevatorDoor/Lights2" index="1"]
+visible = false
+
+[node name="ElevatorDoorCutout" type="CSGBox3D" parent="CSGCombiner3D/A"]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, 7.92687, -1.23468, -0.0317292)
+material_override = ExtResource("5_rog4u")
 operation = 2
-size = Vector3(0.274417, 1.27339, 1.14362)
+size = Vector3(0.274417, 1.25829, 1.14362)
+material = ExtResource("5_rog4u")
 
-[node name="Crates1" type="Node3D" parent="CSGCombiner3D/MainRoomBox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.45568, -1.66494, -4.26163)
-
-[node name="Crate2" type="CSGBox3D" parent="CSGCombiner3D/MainRoomBox/Crates1"]
-transform = Transform3D(0.999995, 0, 0, 0, 1, 0, 0, 0, 1, 1.07921, -0.00654578, -0.308258)
+[node name="Crate2" type="CSGBox3D" parent="CSGCombiner3D/A"]
+transform = Transform3D(0.999995, 0, 0, 0, 1, 0, 0, 0, 1, 7.53489, -1.67149, -4.56989)
 size = Vector3(0.4, 0.4, 0.4)
 
-[node name="Crate3" type="CSGBox3D" parent="CSGCombiner3D/MainRoomBox/Crates1"]
-transform = Transform3D(0.999995, 0, 0, 0, 1, 0, 0, 0, 1, 1.01452, -0.00654578, 0.329916)
+[node name="Crate3" type="CSGBox3D" parent="CSGCombiner3D/A"]
+transform = Transform3D(0.999995, 0, 0, 0, 1, 0, 0, 0, 1, 7.4702, -1.67149, -3.93171)
 size = Vector3(0.4, 0.4, 0.4)
 
-[node name="Crate4" type="CSGBox3D" parent="CSGCombiner3D/MainRoomBox/Crates1"]
-transform = Transform3D(0.999995, 0, 0, 0, 1, 0, 0, 0, 1, -0.242145, -0.00654578, 0.0980687)
+[node name="Crate4" type="CSGBox3D" parent="CSGCombiner3D/A"]
+transform = Transform3D(0.999995, 0, 0, 0, 1, 0, 0, 0, 1, 6.21353, -1.67149, -4.16356)
 size = Vector3(0.4, 0.4, 0.4)
 
-[node name="Crate1" type="CSGBox3D" parent="CSGCombiner3D/MainRoomBox/Crates1"]
-transform = Transform3D(0.999995, 0, 0, 0, 1, 0, 0, 0, 1, 0.654528, -0.00654578, -0.164209)
+[node name="Crate1" type="CSGBox3D" parent="CSGCombiner3D/A"]
+transform = Transform3D(0.999995, 0, 0, 0, 1, 0, 0, 0, 1, 7.11021, -1.67149, -4.42584)
 size = Vector3(0.4, 0.4, 0.4)
 
-[node name="LargeCrate1" type="CSGBox3D" parent="CSGCombiner3D/MainRoomBox/Crates1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.830296, 0.0869626, -0.220572)
+[node name="LargeCrate1" type="CSGBox3D" parent="CSGCombiner3D/A"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.62538, -1.57798, -4.4822)
 size = Vector3(0.625, 0.625, 0.625)
 
-[node name="AquariumControlPanel" type="CSGBox3D" parent="CSGCombiner3D/MainRoomBox"]
+[node name="AquariumControlPanel" type="CSGBox3D" parent="CSGCombiner3D/A"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.36776, -1.58649, 1.52276)
 size = Vector3(0.820557, 0.629028, 0.459961)
 
-[node name="Chamfer" type="CSGBox3D" parent="CSGCombiner3D/MainRoomBox/AquariumControlPanel"]
+[node name="Chamfer" type="CSGBox3D" parent="CSGCombiner3D/A/AquariumControlPanel"]
 transform = Transform3D(1, 0, 0, 0, 0.608526, -0.793534, 0, 0.793534, 0.608526, -0.00454712, 0.352125, -0.209002)
 operation = 2
 size = Vector3(0.864807, 0.599731, 0.509033)
 
-[node name="Screen" type="CSGBox3D" parent="CSGCombiner3D/MainRoomBox/AquariumControlPanel/Chamfer"]
+[node name="Screen" type="CSGBox3D" parent="CSGCombiner3D/A/AquariumControlPanel/Chamfer"]
 transform = Transform3D(1, 0, 0, 0, 1, 2.98023e-08, 0, -2.98023e-08, 1, 0.010376, 0.0299979, 0.25293)
 operation = 2
 size = Vector3(0.748779, 0.438904, 0.0170898)
 
-[node name="SupplyRoomDoorCutout" type="CSGBox3D" parent="CSGCombiner3D/MainRoomBox"]
+[node name="SupplyRoomDoorCutout" type="CSGBox3D" parent="CSGCombiner3D/A"]
 transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, -7.94001, -1.24223, -2.97472)
 operation = 2
 size = Vector3(0.274417, 1.27339, 1.14362)
 material = ExtResource("3_gv6vi")
 
-[node name="Crates2" type="Node3D" parent="CSGCombiner3D/MainRoomBox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.81387, -1.73238, 2.8152)
-
-[node name="LargeCrate2" type="CSGBox3D" parent="CSGCombiner3D/MainRoomBox/Crates2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.626847, 0.145721, 0.144519)
+[node name="LargeCrate2" type="CSGBox3D" parent="CSGCombiner3D/A"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.44072, -1.58666, 2.95972)
+material_override = ExtResource("3_4bjk6")
 size = Vector3(0.625, 0.625, 0.625)
 
-[node name="Crate5" type="CSGBox3D" parent="CSGCombiner3D/MainRoomBox/Crates2"]
-transform = Transform3D(0.999995, 0, 0, 0, 1, 0, 0, 0, 1, 0.233453, 0.0522126, -0.530948)
+[node name="Crate5" type="CSGBox3D" parent="CSGCombiner3D/A"]
+transform = Transform3D(0.999995, 0, 0, 0, 1, 0, 0, 0, 1, 7.04732, -1.68017, 2.28425)
 size = Vector3(0.4, 0.4, 0.4)
 
-[node name="Lights" type="Node3D" parent="CSGCombiner3D/MainRoomBox"]
+[node name="Lights" type="Node3D" parent="CSGCombiner3D/A"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.77203, 0)
 
-[node name="Light1" type="CSGBox3D" parent="CSGCombiner3D/MainRoomBox/Lights"]
+[node name="Light1" type="CSGBox3D" parent="CSGCombiner3D/A/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0477862, 0)
 size = Vector3(0.8, 0.15, 2)
 
-[node name="CoverCutout" type="CSGBox3D" parent="CSGCombiner3D/MainRoomBox/Lights/Light1"]
+[node name="CoverCutout" type="CSGBox3D" parent="CSGCombiner3D/A/Lights/Light1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0716662, 0)
 operation = 2
 size = Vector3(0.7, 0.01, 1.9)
 
-[node name="Light2" type="CSGBox3D" parent="CSGCombiner3D/MainRoomBox/Lights"]
+[node name="Light2" type="CSGBox3D" parent="CSGCombiner3D/A/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.10245, 0.0477862, 0)
 size = Vector3(0.8, 0.15, 2)
 
-[node name="CoverCutout" type="CSGBox3D" parent="CSGCombiner3D/MainRoomBox/Lights/Light2"]
+[node name="CoverCutout" type="CSGBox3D" parent="CSGCombiner3D/A/Lights/Light2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0716662, 0)
 operation = 2
 size = Vector3(0.7, 0.01, 1.9)
 
-[node name="Light3" type="CSGBox3D" parent="CSGCombiner3D/MainRoomBox/Lights"]
+[node name="Light3" type="CSGBox3D" parent="CSGCombiner3D/A/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.61357, 0.0477862, 0)
 size = Vector3(0.8, 0.15, 2)
 
-[node name="CoverCutout" type="CSGBox3D" parent="CSGCombiner3D/MainRoomBox/Lights/Light3"]
+[node name="CoverCutout" type="CSGBox3D" parent="CSGCombiner3D/A/Lights/Light3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0716662, 0)
 operation = 2
 size = Vector3(0.7, 0.01, 1.9)
 
-[node name="Desk1" type="Node3D" parent="CSGCombiner3D/MainRoomBox"]
+[node name="Desk1" type="Node3D" parent="CSGCombiner3D/A"]
 transform = Transform3D(0.938511, 0, -0.345249, 0, 1, 0, 0.345249, 0, 0.938511, 4.14361, -1.79216, -4.43214)
 
-[node name="DeskBox" type="CSGBox3D" parent="CSGCombiner3D/MainRoomBox/Desk1"]
+[node name="DeskBox" type="CSGBox3D" parent="CSGCombiner3D/A/Desk1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0161755, 0.0993119, 0.219602)
 size = Vector3(1.45117, 0.368896, 0.725)
 
-[node name="BottomCutout" type="CSGBox3D" parent="CSGCombiner3D/MainRoomBox/Desk1/DeskBox"]
+[node name="BottomCutout" type="CSGBox3D" parent="CSGCombiner3D/A/Desk1/DeskBox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.146387, -0.0242996, -0.00765991)
 operation = 2
 size = Vector3(0.995714, 0.322342, 0.795349)
 
-[node name="Cabinet1" type="CSGBox3D" parent="CSGCombiner3D/MainRoomBox/Desk1/DeskBox"]
+[node name="Cabinet1" type="CSGBox3D" parent="CSGCombiner3D/A/Desk1/DeskBox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.535924, 0.0801748, 0.375887)
 size = Vector3(0.317406, 0.0985146, 0.0252686)
 
-[node name="Cabinet2" type="CSGBox3D" parent="CSGCombiner3D/MainRoomBox/Desk1/DeskBox"]
+[node name="Cabinet2" type="CSGBox3D" parent="CSGCombiner3D/A/Desk1/DeskBox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.538055, -0.0612722, 0.375887)
 size = Vector3(0.317406, 0.0985146, 0.0252686)
 
@@ -264,9 +410,9 @@ size = Vector3(3.257, 2.45664, 16.4194)
 material = ExtResource("3_gv6vi")
 
 [node name="Cutout" type="CSGBox3D" parent="CSGCombiner3D/HallwayBox1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0188447, -0.0463676, 0.039897)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0188448, -0.0463676, -0.0148087)
 operation = 2
-size = Vector3(2.99088, 2.01479, 17.2364)
+size = Vector3(2.99088, 2.01479, 17.127)
 material = ExtResource("4_ofqnl")
 
 [node name="CielingPipe1" type="CSGCylinder3D" parent="CSGCombiner3D/HallwayBox1"]
@@ -281,26 +427,29 @@ radius = 0.17
 height = 3.19444
 material = ExtResource("2_oc17y")
 
-[node name="StorageRoomBox" type="CSGBox3D" parent="CSGCombiner3D"]
+[node name="D" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.67467, 1.16707, -1.63967)
 size = Vector3(3.371, 2.3, 5.866)
 material = ExtResource("3_gv6vi")
 
-[node name="Cutout" type="CSGBox3D" parent="CSGCombiner3D/StorageRoomBox"]
+[node name="Cutout" type="CSGBox3D" parent="CSGCombiner3D/D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.034668, 0.0395203, 0.118317)
 operation = 2
 size = Vector3(3.32715, 2.17096, 5.54425)
 material = ExtResource("3_gv6vi")
 
-[node name="SecurityRoom" type="CSGBox3D" parent="CSGCombiner3D"]
+[node name="B" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.1459, 1.33759, -10.3483)
 size = Vector3(4.518, 2.83386, 8.00743)
 
-[node name="Cutout" type="CSGBox3D" parent="CSGCombiner3D/SecurityRoom"]
+[node name="Cutout" type="CSGBox3D" parent="CSGCombiner3D/B"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0541701, 0.0290576, -0.397293)
 operation = 2
 size = Vector3(4.26594, 2.48944, 6.84937)
 material = ExtResource("4_ofqnl")
+
+[node name="DeskBox" parent="CSGCombiner3D/B" instance=ExtResource("7_e7pug")]
+transform = Transform3D(-1.33333, 0, -1.16564e-07, 0, 1.33333, 0, 1.16564e-07, 0, -1.33333, 0.0139322, -0.93891, -1.77995)
 
 [node name="HallwayDoorCutout" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, 2.94893, 0.805001, -9.91939)
@@ -308,80 +457,145 @@ operation = 2
 size = Vector3(0.337404, 1.29294, 1.14362)
 material = ExtResource("3_gv6vi")
 
-[node name="TurbinesRoomBox" type="CSGBox3D" parent="CSGCombiner3D"]
+[node name="C" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.51729, 0.163223, -12.5513)
 size = Vector3(14.6953, 5.20456, 13.9642)
 material = ExtResource("3_gv6vi")
 
-[node name="MainCutout" type="CSGBox3D" parent="CSGCombiner3D/TurbinesRoomBox"]
+[node name="MainCutout" type="CSGBox3D" parent="CSGCombiner3D/C"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0550776, 0.0148926, 0.585541)
 operation = 2
 size = Vector3(14.4518, 4.24365, 12.1601)
 material = ExtResource("3_gv6vi")
 
-[node name="InnerRoom" type="CSGBox3D" parent="CSGCombiner3D/TurbinesRoomBox"]
+[node name="InnerRoom" type="CSGBox3D" parent="CSGCombiner3D/C"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.57782, -1.11227, 3.10553)
 size = Vector3(3.22327, 2.06323, 7.21106)
 material = ExtResource("4_ofqnl")
 
-[node name="Cutout" type="CSGBox3D" parent="CSGCombiner3D/TurbinesRoomBox/InnerRoom"]
+[node name="Cutout" type="CSGBox3D" parent="CSGCombiner3D/C/InnerRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.129349, -0.0440063, -0.00606537)
 operation = 2
 size = Vector3(3.2117, 1.88635, 6.96132)
 material = ExtResource("4_ofqnl")
 
-[node name="WindowCutout" type="CSGBox3D" parent="CSGCombiner3D/TurbinesRoomBox/InnerRoom"]
+[node name="WindowCutout" type="CSGBox3D" parent="CSGCombiner3D/C/InnerRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.51412, 0, -1.03604)
 operation = 2
 size = Vector3(0.21582, 1, 2.24994)
 material = ExtResource("4_ofqnl")
 
-[node name="InnerRoomDoorCutout" type="CSGBox3D" parent="CSGCombiner3D/TurbinesRoomBox"]
+[node name="InnerRoomDoorCutout" type="CSGBox3D" parent="CSGCombiner3D/C"]
 transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, 4.1218, -1.445, 4.46601)
 operation = 2
 size = Vector3(0.337404, 1.29294, 1.14362)
 material = ExtResource("4_ofqnl")
 
-[node name="Staircase" type="CSGBox3D" parent="CSGCombiner3D/TurbinesRoomBox"]
+[node name="Staircase" type="CSGBox3D" parent="CSGCombiner3D/C"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.55957, -1.10138, -1.02778)
 size = Vector3(3.20142, 2.05212, 1.04248)
 material = ExtResource("5_rog4u")
 
-[node name="RampCutout" type="CSGBox3D" parent="CSGCombiner3D/TurbinesRoomBox/Staircase"]
+[node name="RampCutout" type="CSGBox3D" parent="CSGCombiner3D/C/Staircase"]
 transform = Transform3D(0.753965, -0.656915, 0, 0.656915, 0.753965, 0, 0, 0, 1, -1.01181, 0.620232, 0.020813)
 operation = 2
 size = Vector3(3.99426, 1.71301, 1.20764)
 material = ExtResource("5_rog4u")
 
-[node name="Turbine1" type="CSGCylinder3D" parent="CSGCombiner3D/TurbinesRoomBox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.13593, -1.67995, 3.8711)
-radius = 2.126
-height = 1.50684
-sides = 16
-material = ExtResource("2_oc17y")
-
-[node name="Turbine2" type="CSGCylinder3D" parent="CSGCombiner3D/TurbinesRoomBox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.13593, -1.67995, -2.4024)
-radius = 2.126
-height = 1.50684
-sides = 16
-material = ExtResource("2_oc17y")
-
-[node name="CatWalk" type="CSGBox3D" parent="CSGCombiner3D/TurbinesRoomBox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.67214, -0.160597, 6.18729)
+[node name="CatWalk" type="CSGBox3D" parent="CSGCombiner3D/C"]
+transform = Transform3D(0.999986, 0.00523596, 0, -0.00523596, 0.999986, 0, 0, 0, 1, -1.67214, -0.160597, 6.18729)
 size = Vector3(11.3291, 0.123047, 1)
 material = ExtResource("5_rog4u")
 
-[node name="HallwayDoorCutout2" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, -0.244133, 0.776801, -9.89815)
+[node name="Lights2" type="Node3D" parent="CSGCombiner3D/C"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.91553, 1.98563, 0.128743)
+
+[node name="Light1" type="CSGBox3D" parent="CSGCombiner3D/C/Lights2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0477862, 0)
+size = Vector3(0.8, 0.15, 2)
+
+[node name="CoverCutout" type="CSGBox3D" parent="CSGCombiner3D/C/Lights2/Light1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0716662, 0)
 operation = 2
-size = Vector3(0.274417, 1.27339, 1.14362)
+size = Vector3(0.7, 0.01, 1.9)
+
+[node name="Light2" type="CSGBox3D" parent="CSGCombiner3D/C/Lights2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.10245, 0.0477862, 0)
+size = Vector3(0.8, 0.15, 2)
+
+[node name="CoverCutout" type="CSGBox3D" parent="CSGCombiner3D/C/Lights2/Light2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0716662, 0)
+operation = 2
+size = Vector3(0.7, 0.01, 1.9)
+
+[node name="Light3" type="CSGBox3D" parent="CSGCombiner3D/C/Lights2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.61357, 0.0477862, 0)
+size = Vector3(0.8, 0.15, 2)
+
+[node name="CoverCutout" type="CSGBox3D" parent="CSGCombiner3D/C/Lights2/Light3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0716662, 0)
+operation = 2
+size = Vector3(0.7, 0.01, 1.9)
+
+[node name="Lights3" type="Node3D" parent="CSGCombiner3D/C"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.70679, 1.98563, 0.128743)
+
+[node name="Light1" type="CSGBox3D" parent="CSGCombiner3D/C/Lights3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0477862, 0)
+size = Vector3(0.8, 0.15, 2)
+
+[node name="CoverCutout" type="CSGBox3D" parent="CSGCombiner3D/C/Lights3/Light1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0716662, 0)
+operation = 2
+size = Vector3(0.7, 0.01, 1.9)
+
+[node name="Light2" type="CSGBox3D" parent="CSGCombiner3D/C/Lights3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.10245, 0.0477862, 0)
+size = Vector3(0.8, 0.15, 2)
+
+[node name="CoverCutout" type="CSGBox3D" parent="CSGCombiner3D/C/Lights3/Light2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0716662, 0)
+operation = 2
+size = Vector3(0.7, 0.01, 1.9)
+
+[node name="Light3" type="CSGBox3D" parent="CSGCombiner3D/C/Lights3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.61357, 0.0477862, 0)
+size = Vector3(0.8, 0.15, 2)
+
+[node name="CoverCutout" type="CSGBox3D" parent="CSGCombiner3D/C/Lights3/Light3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0716662, 0)
+operation = 2
+size = Vector3(0.7, 0.01, 1.9)
+
+[node name="MeshInstance3D" parent="CSGCombiner3D/C" instance=ExtResource("8_qj5x3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6586, -1.1912, -2.74231)
+
+[node name="MeshInstance3D2" parent="CSGCombiner3D/C" instance=ExtResource("8_qj5x3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6586, -0.987316, 2.75761)
+
+[node name="MeshInstance3D3" parent="CSGCombiner3D/C" instance=ExtResource("8_qj5x3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.815804, -1.88246, 2.75761)
+
+[node name="MeshInstance3D4" parent="CSGCombiner3D/C" instance=ExtResource("8_qj5x3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.815804, -3.4553, -2.34257)
+
+[node name="FoodDropper2" parent="CSGCombiner3D/C" instance=ExtResource("9_uun4i")]
+transform = Transform3D(-0.312001, 0.117329, 2.7276e-08, 0.117329, 0.312001, -1.02573e-08, -2.91409e-08, -9.41147e-23, -0.333333, 7.01943, -0.511455, 3.59307)
+layers = 2
+
+[node name="Spawner" parent="CSGCombiner3D/C/FoodDropper2" index="0"]
+transform = Transform3D(1, -2.98023e-08, 0, 2.98023e-08, 1, -1.7756e-15, 0, -2.6054e-15, 1, 0.0692472, -0.74884, 0)
+
+[node name="HallwayDoorCutout2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, -0.244133, 0.758229, -9.89815)
+operation = 2
+size = Vector3(0.274417, 1.31053, 1.14362)
 material = ExtResource("3_gv6vi")
 
 [node name="HallwayDoorCutout3" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(-4.37113e-08, 0, -1, 0, 1, 0, 0.999999, 0, -4.37114e-08, 1.34641, 0.757774, -4.95646)
+transform = Transform3D(-4.37113e-08, 0, -1, 0, 1, 0, 0.999999, 0, -4.37114e-08, 1.34641, 0.757774, -5.13615)
 operation = 2
-size = Vector3(0.274417, 1.27339, 1.14362)
+size = Vector3(0.633791, 1.27339, 1.14362)
 material = ExtResource("3_gv6vi")
 
 [node name="TurbineStorageVentBox" type="CSGBox3D" parent="CSGCombiner3D"]
@@ -394,143 +608,273 @@ operation = 2
 size = Vector3(1, 1, 2.002)
 material = ExtResource("3_gv6vi")
 
-[node name="GiganticPipesRoomBox" type="CSGBox3D" parent="CSGCombiner3D"]
+[node name="E" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.9019, 0.512817, -12.4801)
 size = Vector3(6.11755, 5.94067, 13.7957)
 material = ExtResource("3_gv6vi")
 
-[node name="Cutout" type="CSGBox3D" parent="CSGCombiner3D/GiganticPipesRoomBox"]
+[node name="Cutout" type="CSGBox3D" parent="CSGCombiner3D/E"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20645, 0.0692692, 0.043396)
 operation = 2
 size = Vector3(5.55105, 5.2646, 13.4594)
 material = ExtResource("3_gv6vi")
 
-[node name="Staircase" type="CSGBox3D" parent="CSGCombiner3D/GiganticPipesRoomBox"]
+[node name="Staircase" type="CSGBox3D" parent="CSGCombiner3D/E"]
 transform = Transform3D(0.818492, -0.574441, -0.00941161, 0.574518, 0.81838, 0.0135251, -6.70847e-05, -0.0164773, 0.999864, 0.411802, -1.5675, 6.29132)
 size = Vector3(3.90149, 0.129929, 1.04248)
 material = ExtResource("5_rog4u")
 
-[node name="HUMONGOUS_PIPE1" type="CSGCylinder3D" parent="CSGCombiner3D/GiganticPipesRoomBox"]
+[node name="HUMONGOUS_PIPE1" type="CSGCylinder3D" parent="CSGCombiner3D/E"]
 transform = Transform3D(0.660002, -0.751264, 0, 0.751264, 0.660002, 0, 0, 0, 1, -1.01529, -0.493281, 3.0007)
 radius = 1.256
 height = 9.3939
 sides = 18
 material = ExtResource("2_oc17y")
 
-[node name="ValveControlCore" type="CSGCylinder3D" parent="CSGCombiner3D/GiganticPipesRoomBox/HUMONGOUS_PIPE1"]
+[node name="ValveControlCore" type="CSGCylinder3D" parent="CSGCombiner3D/E/HUMONGOUS_PIPE1"]
 transform = Transform3D(-1, -8.74228e-08, 0, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0.149084, -1.20893, 0.212934)
 radius = 0.153
 height = 2.79028
 material = ExtResource("3_4bjk6")
 
-[node name="Handle" type="CSGCylinder3D" parent="CSGCombiner3D/GiganticPipesRoomBox/HUMONGOUS_PIPE1/ValveControlCore"]
+[node name="Handle" type="CSGCylinder3D" parent="CSGCombiner3D/E/HUMONGOUS_PIPE1/ValveControlCore"]
 transform = Transform3D(1, -6.61724e-24, -1.01428e-36, 1.69407e-21, 1, 7.10543e-15, 3.23683e-36, -7.10543e-15, 1, 0, -1.40628, 0)
 radius = 0.338
 height = 0.046
 material = ExtResource("3_4bjk6")
 
-[node name="HUMONGOUS_PIPE2" type="CSGCylinder3D" parent="CSGCombiner3D/GiganticPipesRoomBox"]
+[node name="HUMONGOUS_PIPE2" type="CSGCylinder3D" parent="CSGCombiner3D/E"]
 transform = Transform3D(0.659451, -0.751748, 0, 0.751748, 0.659451, 0, 0, 0, 1, -1.01529, -0.493281, -2.19531)
 radius = 1.256
 height = 9.39704
 sides = 18
 material = ExtResource("2_oc17y")
 
-[node name="Hole" type="CSGSphere3D" parent="CSGCombiner3D/GiganticPipesRoomBox/HUMONGOUS_PIPE2"]
+[node name="Hole" type="CSGSphere3D" parent="CSGCombiner3D/E/HUMONGOUS_PIPE2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.695536, -0.446265, 0.185007)
 operation = 2
 radius = 0.931564
 material = ExtResource("2_oc17y")
 
-[node name="HUMONGOUS_PIPE2_CUTOUT" type="CSGCylinder3D" parent="CSGCombiner3D/GiganticPipesRoomBox/HUMONGOUS_PIPE2"]
+[node name="HUMONGOUS_PIPE2_CUTOUT" type="CSGCylinder3D" parent="CSGCombiner3D/E/HUMONGOUS_PIPE2"]
 operation = 2
 radius = 1.2
 height = 10.2434
 material = ExtResource("2_oc17y")
 
-[node name="Valve" type="CSGCylinder3D" parent="CSGCombiner3D/GiganticPipesRoomBox/HUMONGOUS_PIPE2"]
+[node name="Valve" type="CSGCylinder3D" parent="CSGCombiner3D/E/HUMONGOUS_PIPE2"]
 transform = Transform3D(0.698491, 0.715621, 0, -0.715621, 0.698491, 0, 0, 0, 1, 0.0736198, -1.44535, 0)
 radius = 1.1781
 height = 0.087
 sides = 18
 material = ExtResource("3_4bjk6")
 
-[node name="ValveControlCore" type="CSGCylinder3D" parent="CSGCombiner3D/GiganticPipesRoomBox/HUMONGOUS_PIPE2/Valve"]
+[node name="ValveControlCore" type="CSGCylinder3D" parent="CSGCombiner3D/E/HUMONGOUS_PIPE2/Valve"]
 transform = Transform3D(1, 2.64698e-23, 4.47035e-08, 4.47035e-08, 1.91069e-15, -1, 0, 1, 1.91069e-15, 0, 0, -0.165827)
 radius = 0.153
 height = 2.79028
 material = ExtResource("3_4bjk6")
 
-[node name="Handle" type="CSGCylinder3D" parent="CSGCombiner3D/GiganticPipesRoomBox/HUMONGOUS_PIPE2/Valve/ValveControlCore"]
+[node name="Handle" type="CSGCylinder3D" parent="CSGCombiner3D/E/HUMONGOUS_PIPE2/Valve/ValveControlCore"]
 transform = Transform3D(1, -6.61724e-24, -1.01428e-36, 1.69407e-21, 1, 7.10543e-15, 3.23683e-36, -7.10543e-15, 1, 0, -1.40628, 0)
 radius = 0.338
 height = 0.046
 material = ExtResource("3_4bjk6")
 
-[node name="HUMONGOUS_PIPE2_CUTOUT" type="CSGCylinder3D" parent="CSGCombiner3D/GiganticPipesRoomBox"]
+[node name="HUMONGOUS_PIPE2_CUTOUT" type="CSGCylinder3D" parent="CSGCombiner3D/E"]
 transform = Transform3D(0.660002, -0.751264, 0, 0.751264, 0.660002, 0, 0, 0, 1, -2.36625, 0.681279, -2.195)
 operation = 2
 radius = 1.2
 height = 4.48251
 material = ExtResource("2_oc17y")
 
-[node name="CatWalk" type="CSGBox3D" parent="CSGCombiner3D/GiganticPipesRoomBox"]
+[node name="CatWalk" type="CSGBox3D" parent="CSGCombiner3D/E"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.47289, -0.429913, 1.23674)
 size = Vector3(11.3291, 0.123047, 1)
 material = ExtResource("5_rog4u")
 
 [node name="TurbinesCatwalkDoorCutout" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, -14.8597, 0.805001, -6.37204)
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, -14.8597, 0.790345, -6.37204)
 operation = 2
-size = Vector3(0.337404, 1.29294, 0.915963)
+size = Vector3(0.337404, 1.32225, 0.915963)
 material = ExtResource("3_gv6vi")
 
-[node name="FactoryRoomBox" type="CSGBox3D" parent="CSGCombiner3D"]
+[node name="F" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.25812, 0.947021, -29.0686)
 size = Vector3(33.3361, 5.66104, 15.4588)
 material = ExtResource("3_gv6vi")
 
-[node name="Cutout" type="CSGBox3D" parent="CSGCombiner3D/FactoryRoomBox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0801697, -0.0682983, -0.0830841)
+[node name="Cutout" type="CSGBox3D" parent="CSGCombiner3D/F"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.24714, -0.0682983, -0.0830841)
 operation = 2
-size = Vector3(32.9977, 4.89856, 15.0175)
+size = Vector3(18.3431, 4.89856, 15.0175)
 material = ExtResource("3_gv6vi")
 
-[node name="ElevatedWalkway" type="CSGBox3D" parent="CSGCombiner3D/FactoryRoomBox"]
+[node name="ElevatedWalkway" type="CSGBox3D" parent="CSGCombiner3D/F"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.72968, -1.72553, 6.72013)
 size = Vector3(16.6417, 1.76868, 1.42844)
 material = ExtResource("5_rog4u")
 
-[node name="RampCutout" type="CSGBox3D" parent="CSGCombiner3D/FactoryRoomBox/ElevatedWalkway"]
+[node name="RampCutout" type="CSGBox3D" parent="CSGCombiner3D/F/ElevatedWalkway"]
 transform = Transform3D(0.425037, 2.09876e-08, 0.905176, 0.905176, -5.81455e-08, -0.425037, 4.37114e-08, 1, -4.37114e-08, 6.70587, 0.898945, 0.297268)
 operation = 2
 size = Vector3(1.87219, 2.46076, 6.7886)
 material = ExtResource("5_rog4u")
 
-[node name="Desk1" type="Node3D" parent="CSGCombiner3D/FactoryRoomBox"]
+[node name="Desk1" type="Node3D" parent="CSGCombiner3D/F"]
 transform = Transform3D(0.938511, 0, -0.345249, 0, 1, 0, 0.345249, 0, 0.938511, -15.0606, -2.33437, 2.95792)
 
-[node name="DeskBox" type="CSGBox3D" parent="CSGCombiner3D/FactoryRoomBox/Desk1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0161755, 0.0993119, 0.219602)
-size = Vector3(1.45117, 0.368896, 0.725)
+[node name="HUMONGOUS_PIPE1" type="CSGCylinder3D" parent="CSGCombiner3D/F"]
+transform = Transform3D(0.941292, 0.115199, -0.317331, 0.101896, 0.79919, 0.592379, 0.32185, -0.589936, 0.740532, -0.692094, 4.74806, -9.19095)
+radius = 1.256
+height = 11.2235
+sides = 18
+material = ExtResource("2_oc17y")
 
-[node name="BottomCutout" type="CSGBox3D" parent="CSGCombiner3D/FactoryRoomBox/Desk1/DeskBox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.146387, -0.0242996, -0.00765991)
+[node name="HUMONGOUS_PIPE2_CUTOUT" type="CSGCylinder3D" parent="CSGCombiner3D/F/HUMONGOUS_PIPE1"]
+transform = Transform3D(1, 2.98023e-08, 4.47035e-08, 0, 1, -1.19209e-07, -5.96046e-08, 0, 1, 0, 0, 0)
 operation = 2
-size = Vector3(0.995714, 0.322342, 0.795349)
+radius = 1.2
+height = 11.4623
+material = ExtResource("2_oc17y")
 
-[node name="Cabinet1" type="CSGBox3D" parent="CSGCombiner3D/FactoryRoomBox/Desk1/DeskBox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.535924, 0.0801748, 0.375887)
-size = Vector3(0.317406, 0.0985146, 0.0252686)
+[node name="HUMONGOUS_PIPE2_CUTOUT2" type="CSGCylinder3D" parent="CSGCombiner3D/F"]
+transform = Transform3D(0.941292, 0.1152, -0.317331, 0.101896, 0.79919, 0.592379, 0.32185, -0.589936, 0.740532, -0.692094, 4.74806, -9.19095)
+operation = 2
+radius = 1.2
+height = 11.4623
+material = ExtResource("2_oc17y")
 
-[node name="Cabinet2" type="CSGBox3D" parent="CSGCombiner3D/FactoryRoomBox/Desk1/DeskBox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.538055, -0.0612722, 0.375887)
-size = Vector3(0.317406, 0.0985146, 0.0252686)
+[node name="DeskBox" parent="CSGCombiner3D/F" instance=ExtResource("7_e7pug")]
+transform = Transform3D(1.33333, 0, 0, 0, 1.33333, 0, 0, 0, 1.33333, -3.77576, -2.3605, -6.16833)
+collision_layer = 3
+collision_mask = 3
+material = ExtResource("1_q4d32")
+
+[node name="DeskBox2" parent="CSGCombiner3D/F" instance=ExtResource("7_e7pug")]
+transform = Transform3D(1.33333, 0, 0, 0, 1.33333, 0, 0, 0, 1.33333, -7.23983, -2.3605, -6.16833)
+collision_layer = 3
+collision_mask = 3
+material = ExtResource("1_q4d32")
+
+[node name="DeskBox3" parent="CSGCombiner3D/F" instance=ExtResource("7_e7pug")]
+transform = Transform3D(1.33333, 0, 0, 0, 1.33333, 0, 0, 0, 1.33333, -10.7991, -2.3605, -6.16833)
+collision_layer = 3
+collision_mask = 3
+material = ExtResource("1_q4d32")
+
+[node name="DeskBox4" parent="CSGCombiner3D/F" instance=ExtResource("7_e7pug")]
+transform = Transform3D(1.33333, 0, 0, 0, 1.33333, 0, 0, 0, 1.33333, -13.737, -2.3605, -6.16833)
+collision_layer = 3
+collision_mask = 3
+material = ExtResource("1_q4d32")
+
+[node name="DeskBox5" parent="CSGCombiner3D/F" instance=ExtResource("7_e7pug")]
+transform = Transform3D(1.33333, 0, 0, 0, 1.33333, 0, 0, 0, 1.33333, -3.77576, -2.3605, -3.38504)
+collision_layer = 3
+collision_mask = 3
+material = ExtResource("1_q4d32")
+
+[node name="DeskBox6" parent="CSGCombiner3D/F" instance=ExtResource("7_e7pug")]
+transform = Transform3D(1.33333, 0, 0, 0, 1.33333, 0, 0, 0, 1.33333, -7.23983, -2.3605, -3.38504)
+collision_layer = 3
+collision_mask = 3
+material = ExtResource("1_q4d32")
+
+[node name="DeskBox7" parent="CSGCombiner3D/F" instance=ExtResource("7_e7pug")]
+transform = Transform3D(1.33333, 0, 0, 0, 1.33333, 0, 0, 0, 1.33333, -10.7991, -2.3605, -3.38504)
+collision_layer = 3
+collision_mask = 3
+material = ExtResource("1_q4d32")
+
+[node name="DeskBox8" parent="CSGCombiner3D/F" instance=ExtResource("7_e7pug")]
+transform = Transform3D(1.33333, 0, 0, 0, 1.33333, 0, 0, 0, 1.33333, -13.737, -2.3605, -3.38504)
+collision_layer = 3
+collision_mask = 3
+material = ExtResource("1_q4d32")
+
+[node name="DeskBox9" parent="CSGCombiner3D/F" instance=ExtResource("7_e7pug")]
+transform = Transform3D(1.33333, 0, 0, 0, 1.33333, 0, 0, 0, 1.33333, -3.77576, -2.3605, -0.502747)
+collision_layer = 3
+collision_mask = 3
+material = ExtResource("1_q4d32")
+
+[node name="DeskBox10" parent="CSGCombiner3D/F" instance=ExtResource("7_e7pug")]
+transform = Transform3D(1.33333, 0, 0, 0, 1.33333, 0, 0, 0, 1.33333, -7.23983, -2.3605, -0.502747)
+collision_layer = 3
+collision_mask = 3
+material = ExtResource("1_q4d32")
+
+[node name="DeskBox11" parent="CSGCombiner3D/F" instance=ExtResource("7_e7pug")]
+transform = Transform3D(1.33333, 0, 0, 0, 1.33333, 0, 0, 0, 1.33333, -10.7991, -2.3605, -0.502747)
+collision_layer = 3
+collision_mask = 3
+material = ExtResource("1_q4d32")
+
+[node name="DeskBox12" parent="CSGCombiner3D/F" instance=ExtResource("7_e7pug")]
+transform = Transform3D(1.33333, 0, 0, 0, 1.33333, 0, 0, 0, 1.33333, -13.737, -2.3605, -0.502747)
+collision_layer = 3
+collision_mask = 3
+material = ExtResource("1_q4d32")
+
+[node name="DeskBox13" parent="CSGCombiner3D/F" instance=ExtResource("7_e7pug")]
+transform = Transform3D(1.33333, 0, 0, 0, 1.33333, 0, 0, 0, 1.33333, -3.77576, -2.3605, 2.11162)
+collision_layer = 3
+collision_mask = 3
+material = ExtResource("1_q4d32")
+
+[node name="DeskBox14" parent="CSGCombiner3D/F" instance=ExtResource("7_e7pug")]
+transform = Transform3D(1.33333, 0, 0, 0, 1.33333, 0, 0, 0, 1.33333, -7.23983, -2.3605, 2.11162)
+collision_layer = 3
+collision_mask = 3
+material = ExtResource("1_q4d32")
+
+[node name="DeskBox15" parent="CSGCombiner3D/F" instance=ExtResource("7_e7pug")]
+transform = Transform3D(1.33333, 0, 0, 0, 1.33333, 0, 0, 0, 1.33333, -10.7991, -2.3605, 2.11162)
+collision_layer = 3
+collision_mask = 3
+material = ExtResource("1_q4d32")
+
+[node name="DeskBox16" parent="CSGCombiner3D/F" instance=ExtResource("7_e7pug")]
+transform = Transform3D(1.33333, 0, 0, 0, 1.33333, 0, 0, 0, 1.33333, -13.737, -2.3605, 2.11162)
+collision_layer = 3
+collision_mask = 3
+material = ExtResource("1_q4d32")
+
+[node name="Lights2" type="Node3D" parent="CSGCombiner3D/F"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.25812, 2.27203, -1.69438)
+
+[node name="Light1" type="CSGBox3D" parent="CSGCombiner3D/F/Lights2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0477862, 0)
+size = Vector3(0.8, 0.15, 2)
+
+[node name="CoverCutout" type="CSGBox3D" parent="CSGCombiner3D/F/Lights2/Light1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0716662, 0)
+operation = 2
+size = Vector3(0.7, 0.01, 1.9)
+
+[node name="Light2" type="CSGBox3D" parent="CSGCombiner3D/F/Lights2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.10245, 0.0477862, 0)
+size = Vector3(0.8, 0.15, 2)
+
+[node name="CoverCutout" type="CSGBox3D" parent="CSGCombiner3D/F/Lights2/Light2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0716662, 0)
+operation = 2
+size = Vector3(0.7, 0.01, 1.9)
+
+[node name="Light3" type="CSGBox3D" parent="CSGCombiner3D/F/Lights2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.61357, 0.0477862, 0)
+size = Vector3(0.8, 0.15, 2)
+
+[node name="CoverCutout" type="CSGBox3D" parent="CSGCombiner3D/F/Lights2/Light3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0716662, 0)
+operation = 2
+size = Vector3(0.7, 0.01, 1.9)
 
 [node name="HallwayDoorCutout4" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(-4.37113e-08, 0, -1, 0, 1, 0, 0.999999, 0, -4.37114e-08, 1.34708, 1.01603, -21.4941)
+transform = Transform3D(-4.37113e-08, 0, -1, 0, 1, 0, 0.999999, 0, -4.37114e-08, 1.34708, 1.00525, -21.4941)
 operation = 2
-size = Vector3(0.49588, 1.78989, 2.39397)
+size = Vector3(0.49588, 1.81145, 2.39397)
 material = ExtResource("3_gv6vi")
 
 [node name="Floor1" type="CSGBox3D" parent="CSGCombiner3D"]
@@ -542,3 +886,412 @@ material = ExtResource("2_hy17d")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.53458, 0.113373, -13.2737)
 size = Vector3(7.64152, 0.0409546, 16.5542)
 material = ExtResource("2_hy17d")
+
+[node name="CSGMesh3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.49695, 0.750989, -0.0523682)
+material_override = ExtResource("2_oc17y")
+size = Vector3(1, 1.30908, 1.27661)
+material = ExtResource("2_oc17y")
+
+[node name="CSGMesh3D2" type="CSGBox3D" parent="CSGCombiner3D/CSGMesh3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.298584, -0.00115967, -0.00772095)
+operation = 2
+size = Vector3(0.402832, 1.23572, 1.20135)
+material = ExtResource("2_oc17y")
+
+[node name="Character" parent="." instance=ExtResource("7_ae05j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.096, 28.2785, -122.985)
+
+[node name="Objects" type="Node3D" parent="."]
+
+[node name="Buttons" type="Node3D" parent="Objects"]
+
+[node name="ButtonLights1" parent="Objects/Buttons" node_paths=PackedStringArray("Connector") instance=ExtResource("8_nux13")]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, -6.05272, 2.29566, -14.6945)
+Connector = [NodePath("../../Lights/A1"), NodePath("../../Lights/A2"), NodePath("../../Lights/A3")]
+UFood = -1
+UWater = -2
+UStress = -1
+
+[node name="Symbol1" parent="Objects/Buttons/ButtonLights1/ButtonCase/Button" index="0"]
+mesh = SubResource("PlaneMesh_64csh")
+
+[node name="ButtonLights2" parent="Objects/Buttons" node_paths=PackedStringArray("Connector") instance=ExtResource("8_nux13")]
+transform = Transform3D(-1, 8.74228e-08, 4.37114e-08, -4.37114e-08, 1.91069e-15, -1, -8.74228e-08, -1, 1.91069e-15, -1.04063, 2.29566, -32.538)
+Connector = [NodePath("../../Lights/C1"), NodePath("../../Lights/C4"), NodePath("../../Lights/C3")]
+UFood = -1
+UWater = -2
+UStress = -1
+
+[node name="Symbol1" parent="Objects/Buttons/ButtonLights2/ButtonCase/Button" index="0"]
+mesh = SubResource("PlaneMesh_64csh")
+
+[node name="ButtonLights3" parent="Objects/Buttons" node_paths=PackedStringArray("Connector") instance=ExtResource("8_nux13")]
+transform = Transform3D(1, -1.74846e-07, -4.37114e-08, -4.37114e-08, 1.91069e-15, -1, 1.74846e-07, 1, -5.73206e-15, -10.0945, -3.4096, -26.9089)
+Connector = [NodePath("../../Lights/C2"), NodePath("../../Lights/C5"), NodePath("../../Lights/C6")]
+UFood = -1
+UWater = -2
+UStress = -1
+
+[node name="ButtonCase" parent="Objects/Buttons/ButtonLights3" index="0"]
+transform = Transform3D(-4.37114e-08, 1, -1.00222e-21, -1, -4.37114e-08, 0, -4.23516e-22, -7.51668e-22, 1, -0.242514, 0, 0)
+
+[node name="Symbol1" parent="Objects/Buttons/ButtonLights3/ButtonCase/Button" index="0"]
+mesh = SubResource("PlaneMesh_64csh")
+
+[node name="ButtonEUP" parent="Objects/Buttons" node_paths=PackedStringArray("Connector") instance=ExtResource("8_nux13")]
+transform = Transform3D(-0.35, 5.28485e-08, -2.31008e-15, 0, -1.5299e-08, -0.35, -5.28485e-08, -0.35, 1.5299e-08, 23.5748, 2.07089, 1.97221)
+Connector = [NodePath("../../Doors/DoorE")]
+
+[node name="Symbol1" parent="Objects/Buttons/ButtonEUP/ButtonCase/Button" index="0"]
+mesh = SubResource("PlaneMesh_xwvfg")
+
+[node name="ButtonEDown" parent="Objects/Buttons" instance=ExtResource("8_nux13")]
+transform = Transform3D(-0.35, 5.28485e-08, -2.31008e-15, 0, -1.5299e-08, -0.35, -5.28485e-08, -0.35, 1.5299e-08, 23.5748, 1.66695, 1.97221)
+
+[node name="Symbol1" parent="Objects/Buttons/ButtonEDown/ButtonCase/Button" index="0"]
+mesh = SubResource("PlaneMesh_ykfat")
+
+[node name="ButtonSLeaving" parent="Objects/Buttons" node_paths=PackedStringArray("Connector") instance=ExtResource("8_nux13")]
+transform = Transform3D(4.37114e-08, 1, 8.74228e-08, 4.37114e-08, 8.74228e-08, -1, -1, 4.37114e-08, -4.37114e-08, -1.815, 2.179, -64.929)
+Connector = [NodePath("../../Doors/DoorS-H1")]
+
+[node name="Symbol1" parent="Objects/Buttons/ButtonSLeaving/ButtonCase/Button" index="0"]
+mesh = SubResource("PlaneMesh_l3j51")
+
+[node name="ButtonSLeaving2" parent="Objects/Buttons" node_paths=PackedStringArray("Connector") instance=ExtResource("8_nux13")]
+transform = Transform3D(-1, 1.06581e-14, -4.37114e-08, 4.37114e-08, 8.74228e-08, -1, -1.06581e-14, -1, -8.74228e-08, -44.9341, 2.179, -47.8857)
+Connector = [NodePath("../../../Vent Door")]
+
+[node name="Symbol1" parent="Objects/Buttons/ButtonSLeaving2/ButtonCase/Button" index="0"]
+mesh = SubResource("PlaneMesh_l3j51")
+
+[node name="ButtonSEntering" parent="Objects/Buttons" node_paths=PackedStringArray("Connector") instance=ExtResource("8_nux13")]
+transform = Transform3D(1, -1.42109e-14, 0, 3.55271e-15, -4.37114e-08, -1, 1.42109e-14, 1, -4.37114e-08, -0.443716, 2.19004, -61.0064)
+Connector = [NodePath("../../Doors/DoorS-H1")]
+
+[node name="Symbol1" parent="Objects/Buttons/ButtonSEntering/ButtonCase/Button" index="0"]
+mesh = SubResource("PlaneMesh_86ngn")
+
+[node name="FButton" parent="Objects/Buttons" node_paths=PackedStringArray("Connector") instance=ExtResource("8_nux13")]
+transform = Transform3D(-1, 2.98023e-08, 0, 1.3027e-15, 4.37114e-08, -1, -2.98023e-08, -1, -4.37114e-08, 27.5476, -2.80434, -103.465)
+Connector = [NodePath("../../Lights/F1"), NodePath("../../Lights/F2"), NodePath("../../Lights/F3")]
+
+[node name="FButton2" parent="Objects/Buttons" node_paths=PackedStringArray("Connector") instance=ExtResource("8_nux13")]
+transform = Transform3D(7.35137e-08, 1, 4.37114e-08, 1.3027e-15, 4.37114e-08, -1, -1, 7.35137e-08, 1.91069e-15, -3.77604, 2.17939, -64.9156)
+Connector = [NodePath("../../Lights/F1"), NodePath("../../Lights/F2"), NodePath("../../Lights/F3")]
+
+[node name="Doors" type="Node3D" parent="Objects"]
+
+[node name="DoorE" parent="Objects/Doors" instance=ExtResource("10_exy5t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.7838, 2.328, -0.0847607)
+Elevator = true
+
+[node name="DoorRightMesh" parent="Objects/Doors/DoorE/DoorRight" index="0"]
+material_override = ExtResource("2_oc17y")
+
+[node name="DoorLeftMesh" parent="Objects/Doors/DoorE/DoorLeft" index="0"]
+material_override = ExtResource("2_oc17y")
+
+[node name="DoorToE" parent="Objects/Doors" instance=ExtResource("10_exy5t")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4, 2.08297, -15.5169)
+
+[node name="DoorS-H1" parent="Objects/Doors" instance=ExtResource("10_exy5t")]
+transform = Transform3D(-2.18557e-08, 0, 2, 0, 1.5, 0, -0.5, 0, -8.74228e-08, 4, 2.90707, -64.8197)
+
+[node name="Lights" type="Node3D" parent="Objects"]
+
+[node name="A1" parent="Objects/Lights" instance=ExtResource("11_8rl80")]
+transform = Transform3D(2.244, 0, 0, 0, 21.114, 0, 0, 0, 5.814, 12.2786, 11.2532, -0.0124252)
+
+[node name="A2" parent="Objects/Lights" instance=ExtResource("11_8rl80")]
+transform = Transform3D(2.244, 0, 0, 0, 21.114, 0, 0, 0, 5.814, 0.0113735, 11.2532, -0.0124252)
+
+[node name="A3" parent="Objects/Lights" instance=ExtResource("11_8rl80")]
+transform = Transform3D(2.244, 0, 0, 0, 21.114, 0, 0, 0, 5.814, -13.9554, 11.2532, -0.0124252)
+
+[node name="F1" parent="Objects/Lights" instance=ExtResource("11_8rl80")]
+transform = Transform3D(2.244, 0, 0, 0, 21.114, 0, 0, 0, 5.814, 12.2786, 9.56085, -92.3552)
+
+[node name="F2" parent="Objects/Lights" instance=ExtResource("11_8rl80")]
+transform = Transform3D(2.244, 0, 0, 0, 21.114, 0, 0, 0, 5.814, 0.0113735, 9.56085, -92.3552)
+
+[node name="F3" parent="Objects/Lights" instance=ExtResource("11_8rl80")]
+transform = Transform3D(2.244, 0, 0, 0, 21.114, 0, 0, 0, 5.814, -13.9554, 9.56085, -92.3552)
+
+[node name="C1" parent="Objects/Lights" instance=ExtResource("11_8rl80")]
+transform = Transform3D(-9.80884e-08, 0, -5.814, 0, 21.114, 0, 2.244, 0, -2.54138e-07, -13.8803, 6.34233, -24.9099)
+
+[node name="C2" parent="Objects/Lights" instance=ExtResource("11_8rl80")]
+transform = Transform3D(-9.80884e-08, 0, -5.814, 0, 21.114, 0, 2.244, 0, -2.54138e-07, -13.8803, 6.34233, -37.1771)
+
+[node name="C3" parent="Objects/Lights" instance=ExtResource("11_8rl80")]
+transform = Transform3D(-9.80884e-08, 0, -5.814, 0, 21.114, 0, 2.244, 0, -2.54138e-07, -13.8803, 6.34233, -51.1439)
+
+[node name="C4" parent="Objects/Lights" instance=ExtResource("11_8rl80")]
+transform = Transform3D(-9.80884e-08, 0, -5.814, 0, 21.114, 0, 2.244, 0, -2.54138e-07, -30.7617, 6.34233, -24.9099)
+
+[node name="C5" parent="Objects/Lights" instance=ExtResource("11_8rl80")]
+transform = Transform3D(-9.80884e-08, 0, -5.814, 0, 21.114, 0, 2.244, 0, -2.54138e-07, -30.7617, 6.34233, -37.1771)
+
+[node name="C6" parent="Objects/Lights" instance=ExtResource("11_8rl80")]
+transform = Transform3D(-9.80884e-08, 0, -5.814, 0, 21.114, 0, 2.244, 0, -2.54138e-07, -30.7616, 6.34233, -51.1439)
+
+[node name="Texts" type="Node3D" parent="Objects"]
+
+[node name="Text" parent="Objects/Texts" instance=ExtResource("12_h5sr6")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0.252843, 3.61221, -11.5423)
+visible = false
+
+[node name="Text2" parent="Objects/Texts" instance=ExtResource("12_h5sr6")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0.252843, 4.91016, -11.5423)
+visible = false
+Text = "Smallus Bongus"
+TextBoxText = "Some Body Once Told me"
+
+[node name="Other" type="Node3D" parent="Objects"]
+
+[node name="Interactable" parent="Objects/Other" instance=ExtResource("13_d7i5l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.4007, 1.01482, -23.3664)
+collision_layer = 3
+collision_mask = 3
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Other"]
+transform = Transform3D(0.258819, 3.09086e-08, -0.965926, 0.965926, -5.35353e-08, 0.258819, -4.37114e-08, -1, -4.37114e-08, 24.595, 2.3845, -0.135358)
+mesh = SubResource("QuadMesh_hcp68")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Objects/Other"]
+transform = Transform3D(2.12132, -4.23966e-07, 2.12132, 2.12132, 1.60155e-07, -2.12132, 1.86543e-07, 3, 4.13036e-07, -66.8786, 9.28043, -43.8134)
+layers = 3
+mesh = SubResource("QuadMesh_hcp68")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Objects/Other/MeshInstance3D2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Other/MeshInstance3D2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_a15yp")
+
+[node name="A" type="Label3D" parent="Objects/Other"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 19.7299, 0)
+billboard = 2
+text = "A
+"
+font_size = 1933
+
+[node name="B" type="Label3D" parent="Objects/Other"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.422, 19.7299, -34.1227)
+billboard = 2
+text = "B
+"
+font_size = 1933
+
+[node name="C" type="Label3D" parent="Objects/Other"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.62349, 19.7299, -43.7891)
+billboard = 2
+text = "C
+"
+font_size = 1933
+
+[node name="D" type="Label3D" parent="Objects/Other"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.3616, 19.7299, -5.01178)
+billboard = 2
+text = "D
+"
+font_size = 1933
+
+[node name="E" type="Label3D" parent="Objects/Other"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.8134, 19.7299, -41.6445)
+billboard = 2
+text = "E"
+font_size = 1933
+
+[node name="E2" type="Label3D" parent="Objects/Other"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -180.205, -170.514, -41.6445)
+billboard = 1
+text = "OOPS SORRY ABOUT THAT...."
+font_size = 1933
+
+[node name="F" type="Label3D" parent="Objects/Other"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 19.7299, -83.6605)
+billboard = 2
+text = "F
+"
+font_size = 1933
+
+[node name="DeskBox" parent="Objects/Other" instance=ExtResource("7_e7pug")]
+transform = Transform3D(-2.82843, 0, 2.82843, 0, 4, 0, -2.82843, 0, -2.82843, -4.64838, -5.38282, -34.6552)
+collision_layer = 3
+collision_mask = 3
+
+[node name="FoodButton" parent="Objects/Other" node_paths=PackedStringArray("Connector") instance=ExtResource("8_nux13")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -3.2463, -4.64503, -33.2966)
+Connector = [NodePath("../../../CSGCombiner3D/C/FoodDropper2")]
+
+[node name="Symbol1" parent="Objects/Other/FoodButton/ButtonCase/Button" index="0"]
+mesh = SubResource("PlaneMesh_5pyxx")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("16_bqx4n")
+metadata/_edit_use_anchors_ = true
+
+[node name="Anim" type="AnimationPlayer" parent="." groups=["Tran"]]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_uqfnc")
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 15.0
+autostart = true
+
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 120.0
+autostart = true
+
+[node name="TextBox" type="Control" parent="." groups=["PA"]]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchor_left = 0.310764
+anchor_top = 0.720679
+anchor_right = 0.717014
+anchor_bottom = 0.942901
+offset_top = 3.05176e-05
+grow_horizontal = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="UIText" type="RichTextLabel" parent="TextBox"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.01884
+anchor_bottom = 1.01389
+offset_right = -8.81631
+offset_bottom = -2.0
+grow_horizontal = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="TextBox"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -5.47504
+anchor_top = 11.225
+anchor_right = 12.5501
+anchor_bottom = 15.15
+offset_left = 2562.32
+offset_top = -1616.4
+offset_right = -5405.43
+offset_bottom = -2037.6
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.192739, 0.356647, 0.24688, 0.32549)
+metadata/_edit_use_anchors_ = true
+
+[node name="Node3D" parent="." instance=ExtResource("18_hccmi")]
+transform = Transform3D(-0.176777, 0.176777, 7.72715e-09, 0, -1.09278e-08, 0.25, 0.176777, 0.176777, 7.72715e-09, 12.8439, -3.44558, -105.917)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D"]
+script = ExtResource("19_y4oro")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 3.55271e-15, 1, 0, 0, 0)
+shape = SubResource("SphereShape3D_m8ojb")
+
+[node name="Label3D" type="Label3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 3.55271e-15, 1, 0, 0, 1.4601)
+billboard = 2
+text = "Red Circle =
+Left Mouse to Interact"
+
+[node name="Vent Door" parent="." instance=ExtResource("10_exy5t")]
+transform = Transform3D(1.91069e-15, 1, 4.37114e-08, 4.37114e-08, -4.37114e-08, 1, 1, 0, -4.37114e-08, -31.3311, 2.25671, -17.2672)
+
+[node name="StaticBody3D" parent="." instance=ExtResource("23_qgbet")]
+transform = Transform3D(1.53191, 0, 0.759845, 0, 1.71, 0, -0.759845, 0, 1.53191, 11.6909, -3.48132, -97.6994)
+TextBoxText = "\"Dear Bingus Bongus, I heard the only working water fountain is in the side office. Why can't they get a new one.\""
+
+[node name="StaticBody3D2" parent="." instance=ExtResource("23_qgbet")]
+transform = Transform3D(0.917397, 0, -1.44308, 0, 0.865, 0, 1.44308, 0, 0.917397, -1.50475, -3.41371, -88.7385)
+TextBoxText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+
+[node name="Text" parent="StaticBody3D2" index="1"]
+mesh = SubResource("BoxMesh_lxlq6")
+
+[node name="StaticBody3D3" parent="." instance=ExtResource("23_qgbet")]
+transform = Transform3D(0.917397, 0, -1.44308, 0, 1.71, 0, 1.44308, 0, 0.917397, -10.5215, -3.48132, -97.3507)
+TextBoxText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+
+[node name="StaticBody3D4" parent="." instance=ExtResource("23_qgbet")]
+transform = Transform3D(0.917397, 0, -1.44308, 0, 1.71, 0, 1.44308, 0, 0.917397, 9.59374, -3.48132, -97.3507)
+TextBoxText = "Bills"
+
+[node name="StaticBody3D11" parent="." instance=ExtResource("23_qgbet")]
+transform = Transform3D(0.917397, 0, -1.44308, 0, 1.71, 0, 1.44308, 0, 0.917397, 13.3808, 1.95407, -35.5808)
+TextBoxText = "\"Note to self - If door to elevator is stuck, go through vent.\""
+
+[node name="StaticBody3D12" parent="." instance=ExtResource("23_qgbet")]
+transform = Transform3D(1.70835, 0, -0.0751557, 0, 1.71, 0, 0.0751557, 0, 1.70835, 14.7603, 1.95407, -35.5808)
+TextBoxText = "Bills"
+
+[node name="StaticBody3D13" parent="." instance=ExtResource("23_qgbet")]
+transform = Transform3D(0.965429, 0, -1.4114, 0, 1.71, 0, 1.4114, 0, 0.965429, 16.0213, 1.95407, -35.5808)
+TextBoxText = "Bills"
+
+[node name="StaticBody3D15" parent="." instance=ExtResource("23_qgbet")]
+transform = Transform3D(-0.0461461, -0.593764, -1.60294, -0.0170865, 1.6036, -0.593518, 1.70929, -1.39179e-09, -0.0492079, -4.06075, -4.45153, -33.4134)
+TextBoxText = "\"To Greg, Please stop pressing the [AAKsljdlkjasljasf] button hundreds of times, the robot helpers can't keep up and are breaking.\""
+
+[node name="StaticBody3D14" parent="." instance=ExtResource("23_qgbet")]
+transform = Transform3D(0.965429, 0, -1.4114, 0, 1.71, 0, 1.4114, 0, 0.965429, 17.6208, 1.95407, -35.5808)
+TextBoxText = "Help Wanted"
+
+[node name="StaticBody3D9" parent="." instance=ExtResource("23_qgbet")]
+transform = Transform3D(0.917397, 0, -1.44308, 0, 1.71, 0, 1.44308, 0, 0.917397, -20.5852, -3.48132, -88.454)
+TextBoxText = "Bills"
+
+[node name="StaticBody3D10" parent="." instance=ExtResource("23_qgbet")]
+transform = Transform3D(0.917397, 0, -1.44308, 0, 1.71, 0, 1.44308, 0, 0.917397, -20.5852, -3.48132, -80.6264)
+TextBoxText = "Bills"
+
+[node name="StaticBody3D5" parent="." instance=ExtResource("23_qgbet")]
+transform = Transform3D(-0.338579, 0, -1.67615, 0, 1.71, 0, 1.67615, 0, -0.338579, 9.59374, -3.48132, -105.897)
+TextBoxText = "Bills"
+
+[node name="StaticBody3D6" parent="." instance=ExtResource("23_qgbet")]
+transform = Transform3D(-0.338579, 0, -1.67615, 0, 1.71, 0, 1.67615, 0, -0.338579, 0.264802, -3.48132, -105.897)
+TextBoxText = "Bills"
+
+[node name="StaticBody3D7" parent="." instance=ExtResource("23_qgbet")]
+transform = Transform3D(-0.338579, 0, -1.67615, 0, 1.71, 0, 1.67615, 0, -0.338579, -10.8398, -3.48132, -105.115)
+TextBoxText = "Bills"
+
+[node name="StaticBody3D8" parent="." instance=ExtResource("23_qgbet")]
+transform = Transform3D(-0.338579, 0, -1.67615, 0, 1.71, 0, 1.67615, 0, -0.338579, -19.7679, -3.48132, -105.115)
+TextBoxText = "Coupon for Buy 5 Hotdogs, for the price of 5 Hotdogs"
+
+[connection signal="timeout" from="Timer" to="ColorRect" method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer2" to="ColorRect" method="_on_timer_2_timeout"]
+
+[editable path="CSGCombiner3D/A/ElevatorDoor/Lights"]
+[editable path="CSGCombiner3D/A/ElevatorDoor/Lights2"]
+[editable path="CSGCombiner3D/C/FoodDropper2"]
+[editable path="Objects/Buttons/ButtonLights1"]
+[editable path="Objects/Buttons/ButtonLights2"]
+[editable path="Objects/Buttons/ButtonLights3"]
+[editable path="Objects/Buttons/ButtonEUP"]
+[editable path="Objects/Buttons/ButtonEDown"]
+[editable path="Objects/Buttons/ButtonSLeaving"]
+[editable path="Objects/Buttons/ButtonSLeaving2"]
+[editable path="Objects/Buttons/ButtonSEntering"]
+[editable path="Objects/Buttons/FButton"]
+[editable path="Objects/Buttons/FButton2"]
+[editable path="Objects/Doors/DoorE"]
+[editable path="Objects/Texts/Text"]
+[editable path="Objects/Texts/Text2"]
+[editable path="Objects/Other/FoodButton"]
+[editable path="StaticBody3D2"]

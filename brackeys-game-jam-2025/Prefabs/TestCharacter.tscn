@@ -26,12 +26,6 @@ mesh = SubResource("CapsuleMesh_s8b7g")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_aqyaq")
 
-[node name="Node3D" parent="." instance=ExtResource("1_f22dr")]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 1.26474, 0.887684, -0.70854)
-
-[node name="MeshInstance3D3" parent="Node3D/MeshInstance3D" index="1"]
-texture = SubResource("ViewportTexture_d47ww")
-
 [node name="PlayerCamera" type="Camera3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.329738, 1.25268, 0.20146)
@@ -61,8 +55,19 @@ unique_name_in_owner = true
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_oxqvc")
 
+[node name="SpringArm3D" type="SpringArm3D" parent="PlayerCamera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.631, -0.219, -0.201)
+spring_length = -0.5
+
+[node name="Node3D" parent="PlayerCamera/SpringArm3D" groups=["Tomogatchi"] instance=ExtResource("1_f22dr")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+visible = false
+
+[node name="MeshInstance3D3" parent="PlayerCamera/SpringArm3D/Node3D/MeshInstance3D" index="1"]
+texture = SubResource("ViewportTexture_d47ww")
+
 [node name="UI3D" parent="." instance=ExtResource("6_vr7mt")]
 
-[editable path="Node3D"]
-[editable path="Node3D/MeshInstance3D/MeshInstance3D3/SubViewport/World_Container"]
-[editable path="Node3D/MeshInstance3D/MeshInstance3D3/SubViewport/World_Container/Button"]
+[editable path="PlayerCamera/SpringArm3D/Node3D"]
+[editable path="PlayerCamera/SpringArm3D/Node3D/MeshInstance3D/MeshInstance3D3/SubViewport/World_Container"]
+[editable path="PlayerCamera/SpringArm3D/Node3D/MeshInstance3D/MeshInstance3D3/SubViewport/World_Container/Button"]

@@ -7,6 +7,14 @@ var rng = RandomNumberGenerator.new()
 @export var food : int = 50
 @export var water : int = 50
 @export var stress : int = 50
+@export var textTime : int = 10
+#World States are as folows:
+#0 Failure
+#1 Cutscene
+#2-15 Game is running and events are happening
+@export var WorldState : int = 2
+@export var oldWorldState : int
+var canFail = true
 @export var Types : Dictionary = {"Blue": 5, "Purple": 10, "Yellow" : 1000}
 @export var TypesColor : Dictionary = {"Blue": Color.BLUE, "Purple": Color.PURPLE, "Yellow" : Color.YELLOW}
 @onready var World = get_tree().get_first_node_in_group("World")
@@ -24,11 +32,22 @@ func _ready() -> void:
 	GlobalSignals.closeTextBoxes.connect(_closeTextBoxes)
 	GlobalSignals.updateUI3D.connect(_update_UI_3D)
 	GlobalSignals.updatePlayerStats.connect(_updatePlayerStats)
+	GlobalSignals.updateWorldState.connect(_updateWorldState)
+	GlobalSignals.failState.connect(_failState)
+	GlobalSignals.advanceSubWorldTick.connect(_advanceSubWorldTick)
+	GlobalSignals.advanceMainWorldTick.connect(_advanceMainWorldTick)
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if canFail:
+		if food <= 0 || water <= 0 || stress <= 0:
+			canFail = false
+			var anim = get_tree().get_first_node_in_group("Tran")
+			_updateWorldState(0)
+			anim.play("Fail")
 
 func clone(caller: CharacterBody2D, hit: CharacterBody2D, pos):
 	var popx = rng.randf_range(-2, 2)
@@ -104,3 +123,30 @@ func _closeTextBoxes(caller):
 			caller.flip()
 		else:
 			e.hideText()
+
+func _updateWorldState(new: int):
+		oldWorldState = WorldState
+		if WorldState >= 6:
+			WorldState = 2
+		else:
+			WorldState = new
+
+func _failState():
+	if canFail:
+		canFail = false
+		var anim = get_tree().get_first_node_in_group("Tran")
+		_updateWorldState(0)
+		anim.play("Win")
+
+func _advanceSubWorldTick():
+	food -= 1
+	water -= 1
+	stress -= 1
+	_update_UI_3D()
+	
+func _advanceMainWorldTick():
+	_updateWorldState(WorldState + 1)
+	PaController._worldEventReference()
+	stress -= 10
+	_update_UI_3D()
+	

@@ -1,13 +1,9 @@
-[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://cqfb8yyd7gx28"]
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://cqfb8yyd7gx28"]
 
-[ext_resource type="Texture2D" uid="uid://btw6ddivn3xgg" path="res://Assets/Imported/Danger.png" id="1_uyci6"]
-[ext_resource type="Texture2D" uid="uid://bcricbcqjp3og" path="res://Assets/Imported/Toggle.png" id="2_lolfn"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l6abl"]
-transparency = 1
-albedo_texture = ExtResource("2_lolfn")
+[ext_resource type="Texture2D" uid="uid://dycxi3bdkepx5" path="res://Assets/Imported/Light.png" id="1_1eysw"]
+[ext_resource type="Material" uid="uid://c02tacahtgew1" path="res://Assets/Materials/Symbols/Toggle.tres" id="2_0samm"]
 
 [resource]
-next_pass = SubResource("StandardMaterial3D_l6abl")
+next_pass = ExtResource("2_0samm")
 transparency = 1
-albedo_texture = ExtResource("1_uyci6")
+albedo_texture = ExtResource("1_1eysw")
